@@ -17,13 +17,11 @@
         <div id="subtitle-en" class="subtitle-line subtitle-en" lang="en"></div>
       </div>
     </div>
-    <section id="setup" class="setup" aria-labelledby="title">
-      <div class="setup-card">
-        <h1 id="title">Drifting Sea <span>— Loopntale</span></h1>
-        <button id="start" type="button">Start screening</button>
-        <p>Continuous loop · Original aspect ratio<br>Press Esc for settings · F for fullscreen</p>
-        <p id="status" role="status"></p>
-      </div>
+    <section id="setup" class="setup" aria-label="Start screening">
+      <button id="start" type="button" aria-label="Start screening">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M11 6 L27 16 L11 26 Z" /></svg>
+      </button>
+      <p id="status" role="status"></p>
     </section>
   </main>
   <script type="module" src="./screening.js"></script>

@@ -88,7 +88,7 @@ async function loadSubtitles() {
     fitCues()
     subtitlesReady = true
   } catch {
-    status.textContent = 'Subtitles could not load. Check the connection and press Start screening to retry.'
+    status.textContent = 'Subtitles could not load. Check the connection and press play to retry.'
   }
 }
 
@@ -117,7 +117,7 @@ async function keepAwake() {
 function showSetup() {
   setup.hidden = false
   document.body.classList.remove('screening')
-  start.textContent = started ? 'Continue screening' : 'Start screening'
+  start.setAttribute('aria-label', started ? 'Continue screening' : 'Start screening')
   start.focus()
 }
 
