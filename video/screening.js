@@ -2,15 +2,15 @@ const video = document.querySelector('#film')
 const screen = document.querySelector('#screen')
 const setup = document.querySelector('#setup')
 const start = document.querySelector('#start')
-const language = document.querySelector('#language')
+const turkishLine = document.querySelector('#subtitle-tr')
+const englishLine = document.querySelector('#subtitle-en')
+const measure = document.createElement('canvas').getContext('2d')
 const subtitles = document.querySelector('#subtitles')
 const status = document.querySelector('#status')
 const mediaBase = '../assets/video/resonant-field-film/'
-const requestedLanguage = new URLSearchParams(location.search).get('lang')
-if (['tr', 'en', 'ko', 'off'].includes(requestedLanguage)) language.value = requestedLanguage
 let cues = []
-let subtitleRequest = 0
-let activeCue = null
+let activeText = null
+let subtitlesReady = false
 let wakeLock = null
 let started = false
 
@@ -20,36 +20,91 @@ async function readJson(name) {
   return response.json()
 }
 
+// Balanced phrase-sized portions keep exactly one readable line per language.
+// Both languages advance together within the original cue's start/end interval.
+function splitText(text, count) {
+  const words = text.replace(/\s+/g, ' ').trim().split(' ')
+  const parts = []
+  let offset = 0
+  for (let part = 0; part < count - 1; part++) {
+    const remaining = words.slice(offset).join(' ').length
+    const target = remaining / (count - part)
+    let length = 0
+    let bestEnd = offset + 1
+    let bestScore = Infinity
+    const lastEnd = words.length - (count - part - 1)
+    for (let end = offset + 1; end <= lastEnd; end++) {
+      length += words[end - 1].length + (end > offset + 1 ? 1 : 0)
+      const punctuationBonus = /[.,;:!?]$/.test(words[end - 1]) ? target * 0.12 : 0
+      const score = Math.abs(length - target) - punctuationBonus
+      if (score < bestScore) { bestEnd = end; bestScore = score }
+      if (length > target * 1.4) break
+    }
+    parts.push(words.slice(offset, bestEnd).join(' '))
+    offset = bestEnd
+  }
+  parts.push(words.slice(offset).join(' '))
+  return parts
+}
+
+function fitCues() {
+  const width = subtitles.clientWidth - 4
+  if (width <= 0) return
+  const trFont = getComputedStyle(turkishLine).font
+  const enFont = getComputedStyle(englishLine).font
+  for (const cue of cues) {
+    const maxParts = Math.min(cue.tr.trim().split(/\s+/).length, cue.en.trim().split(/\s+/).length)
+    for (let count = 1; count <= maxParts; count++) {
+      const tr = splitText(cue.tr, count)
+      const en = splitText(cue.en, count)
+      measure.font = trFont
+      const trFits = tr.every(line => measure.measureText(line).width <= width)
+      measure.font = enFont
+      const enFits = en.every(line => measure.measureText(line).width <= width)
+      if (trFits && enFits || count === maxParts) {
+        cue.parts = tr.map((text, i) => ({ tr: text, en: en[i] }))
+        break
+      }
+    }
+  }
+  activeText = null
+  updateSubtitles()
+}
+
 async function loadSubtitles() {
-  const request = ++subtitleRequest
-  const selected = language.value
-  cues = []
-  activeCue = null
-  subtitles.textContent = ''
-  subtitles.lang = selected === 'off' ? 'tr' : selected
   status.textContent = ''
-  if (selected === 'off') return
   try {
-    const [timing, translation] = await Promise.all([
+    const [timing, turkish, english] = await Promise.all([
       readJson('resonant_field_subtitles.json'),
-      selected === 'ko' ? null : readJson(`resonant_field_subtitles_${selected}.json`),
+      readJson('resonant_field_subtitles_tr.json'),
+      readJson('resonant_field_subtitles_en.json'),
     ])
-    if (request !== subtitleRequest) return
-    const textById = new Map(translation?.subtitles.map(cue => [cue.id, cue.text]) ?? [])
-    cues = timing.subtitles.map(cue => ({ ...cue, text: textById.get(cue.id) ?? cue.text }))
-    updateSubtitles()
+    const tr = new Map(turkish.subtitles.map(cue => [cue.id, cue.text]))
+    const en = new Map(english.subtitles.map(cue => [cue.id, cue.text]))
+    cues = timing.subtitles.map(cue => {
+      if (!tr.get(cue.id) || !en.get(cue.id)) throw new Error('Missing bilingual subtitle')
+      return { ...cue, tr: tr.get(cue.id), en: en.get(cue.id), parts: [] }
+    })
+    fitCues()
+    subtitlesReady = true
   } catch {
-    if (request === subtitleRequest) status.textContent = 'Subtitles could not load. Check the connection and select the language again.'
+    status.textContent = 'Subtitles could not load. Check the connection and press Start screening to retry.'
   }
 }
 
 function updateSubtitles() {
-  const cue = cues.find(cue => video.currentTime >= cue.start && video.currentTime < cue.end) ?? null
-  if (cue === activeCue) return
-  activeCue = cue
-  subtitles.textContent = cue?.text ?? ''
+  const cue = cues.find(cue => video.currentTime >= cue.start && video.currentTime < cue.end)
+  const index = cue ? Math.min(cue.parts.length - 1, Math.floor((video.currentTime - cue.start) / (cue.end - cue.start) * cue.parts.length)) : 0
+  const part = cue?.parts[index]
+  const key = part ? `${cue.id}:${index}` : ''
+  if (key === activeText) return
+  activeText = key
+  turkishLine.textContent = part?.tr ?? ''
+  englishLine.textContent = part?.en ?? ''
   subtitles.classList.toggle('dark', cue?.id === 22 || cue?.id === 23)
 }
+
+new ResizeObserver(fitCues).observe(subtitles)
 
 async function keepAwake() {
   if (!started || document.visibilityState !== 'visible' || wakeLock || !navigator.wakeLock) return
@@ -73,6 +128,7 @@ async function enterFullscreen() {
 }
 
 async function startScreening() {
+  if (!subtitlesReady) void loadSubtitles()
   // Both calls begin in the user gesture so browsers can permit audio and fullscreen.
   const fullscreen = enterFullscreen()
   const playback = video.play()
@@ -90,7 +146,6 @@ async function startScreening() {
 }
 
 start.addEventListener('click', () => void startScreening())
-language.addEventListener('change', () => void loadSubtitles())
 video.addEventListener('timeupdate', updateSubtitles)
 video.addEventListener('seeked', updateSubtitles)
 video.addEventListener('error', () => {
@@ -101,7 +156,6 @@ document.addEventListener('fullscreenchange', () => {
   if (!document.fullscreenElement && started) showSetup()
 })
 document.addEventListener('keydown', event => {
-  if (event.target instanceof HTMLSelectElement) return
   if (event.key === 'Escape') showSetup()
   if (event.key.toLowerCase() === 'f' && started) {
     event.preventDefault()

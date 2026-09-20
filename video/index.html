@@ -12,18 +12,14 @@
   <main id="screen" aria-label="Drifting Sea film screening">
     <div class="film">
       <video id="film" src="../assets/video/resonant-field-film/resonant_field_picture.mp4" loop playsinline preload="auto" disablepictureinpicture aria-label="Drifting Sea film"></video>
-      <div id="subtitles" class="subtitles" lang="tr"></div>
+      <div id="subtitles" class="subtitles">
+        <div id="subtitle-tr" class="subtitle-line subtitle-tr" lang="tr"></div>
+        <div id="subtitle-en" class="subtitle-line subtitle-en" lang="en"></div>
+      </div>
     </div>
     <section id="setup" class="setup" aria-labelledby="title">
       <div class="setup-card">
         <h1 id="title">Drifting Sea <span>— Loopntale</span></h1>
-        <label for="language">Subtitles</label>
-        <select id="language">
-          <option value="tr">Türkçe</option>
-          <option value="en">English</option>
-          <option value="ko">한국어</option>
-          <option value="off">Off</option>
-        </select>
         <button id="start" type="button">Start screening</button>
         <p>Continuous loop · Original aspect ratio<br>Press Esc for settings · F for fullscreen</p>
         <p id="status" role="status"></p>
