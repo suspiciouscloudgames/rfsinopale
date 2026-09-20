@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "image": "IMG_1586.JPG",
+  "imageWidth": 4032,
+  "imageHeight": 2268,
+  "aspect": 1.7777777777777777,
+  "colorWidth": 1920,
+  "colorHeight": 1080,
+  "gridWidth": 480,
+  "gridHeight": 270,
+  "hfovDeg": 69.0,
+  "tanH": 0.6872809586016132,
+  "tanV": 0.38659553921340745,
+  "camHeight": 1.55,
+  "horizonV": 0.5,
+  "skyDepth": 250.0,
+  "skyRatio": 0.21839558225553596,
+  "depthMin": 3.3327252864837646,
+  "depthMax": 36.1966552734375,
+  "calibA": 0.27242786946375164,
+  "calibB": 0.02762686031468667,
+  "calibError": 0.006585075637676622,
+  "calibSampleRows": 590,
+  "foregroundOverride": {
+    "u0": 0.884,
+    "u1": 1.0,
+    "v0": 0.0,
+    "v1": 0.405,
+    "depth": 2.3
+  },
+  "lights": [
+    {
+      "name": "moon",
+      "u": 0.489,
+      "v": 0.715,
+      "depth": 250.0,
+      "color": "#fae89a",
+      "intensity": 1.0,
+      "volumetric": false
+    },
+    {
+      "name": "streetL",
+      "u": 0.253,
+      "v": 0.965,
+      "depth": 12.0,
+      "color": "#e8ecf5",
+      "intensity": 1.0,
+      "volumetric": true
+    },
+    {
+      "name": "towerR",
+      "u": 0.808,
+      "v": 0.695,
+      "depth": 32.0,
+      "color": "#dfe6f0",
+      "intensity": 0.8,
+      "volumetric": true
+    },
+    {
+      "name": "signBlue",
+      "u": 0.708,
+      "v": 0.555,
+      "depth": 45.0,
+      "color": "#9fc6ff",
+      "intensity": 0.5,
+      "volumetric": false
+    }
+  ]
+}
