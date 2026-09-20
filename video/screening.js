@@ -1,3 +1,12 @@
+// The new tablet supplies transparent layers; playback remains independent.
+const layerParams = new URLSearchParams(location.search)
+const layerRoom = /^[a-zA-Z0-9_-]{1,40}$/.test(layerParams.get('room') || '') ? layerParams.get('room') : 'sinopale'
+const localPreview = ['localhost', '127.0.0.1'].includes(location.hostname)
+const layerUrl = new URL(localPreview ? 'http://127.0.0.1:5190/' : '/gamepoem/', location.origin)
+layerUrl.searchParams.set('display', '1')
+layerUrl.searchParams.set('room', layerRoom)
+document.querySelector('#interaction-layers').src = layerUrl.href
+
 const video = document.querySelector('#film')
 const screen = document.querySelector('#screen')
 const setup = document.querySelector('#setup')
