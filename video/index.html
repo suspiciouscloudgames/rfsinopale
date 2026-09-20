@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <title>Drifting Sea - Loopntale | Video</title>
+  <link rel="icon" href="../assets/icon-192.png">
+  <link rel="stylesheet" href="./screening.css">
+</head>
+<body>
+  <main id="screen" aria-label="Drifting Sea film screening">
+    <div class="film">
+      <video id="film" src="../assets/video/resonant-field-film/resonant_field_picture.mp4" loop playsinline preload="auto" disablepictureinpicture aria-label="Drifting Sea film"></video>
+      <div id="subtitles" class="subtitles" lang="tr"></div>
+    </div>
+    <section id="setup" class="setup" aria-labelledby="title">
+      <div class="setup-card">
+        <h1 id="title">Drifting Sea <span>— Loopntale</span></h1>
+        <label for="language">Subtitles</label>
+        <select id="language">
+          <option value="tr">Türkçe</option>
+          <option value="en">English</option>
+          <option value="ko">한국어</option>
+          <option value="off">Off</option>
+        </select>
+        <button id="start" type="button">Start screening</button>
+        <p>Continuous loop · Original aspect ratio<br>Press Esc for settings · F for fullscreen</p>
+        <p id="status" role="status"></p>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="./screening.js"></script>
+</body>
+</html>
