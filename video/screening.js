@@ -4,7 +4,7 @@ const layerRoom = /^[a-zA-Z0-9_-]{1,40}$/.test(layerParams.get('room') || '') ? 
 const localPreview = ['localhost', '127.0.0.1'].includes(location.hostname)
 const layerUrl = new URL(localPreview ? 'http://127.0.0.1:5190/' : '/gamepoem/', location.origin)
 layerUrl.searchParams.set('display', '1')
-layerUrl.searchParams.set('v', 'autolink2')
+layerUrl.searchParams.set('v', 'phrase1')
 layerUrl.searchParams.set('room', layerRoom)
 document.querySelector('#interaction-layers').src = layerUrl.href
 
