@@ -1,3 +1,7 @@
+import { createSoundtrack } from './soundtrack.js?v=audio1'
+const soundtrack = createSoundtrack()
+let starting = false
+
 // The new tablet supplies transparent layers; playback remains independent.
 const layerParams = new URLSearchParams(location.search)
 const layerRoom = /^[a-zA-Z0-9_-]{1,40}$/.test(layerParams.get('room') || '') ? layerParams.get('room') : 'sinopale'
@@ -138,19 +142,27 @@ async function enterFullscreen() {
 }
 
 async function startScreening() {
+  if (starting) return
+  starting = true
   if (!subtitlesReady) void loadSubtitles()
   // Both calls begin in the user gesture so browsers can permit audio and fullscreen.
   const fullscreen = enterFullscreen()
   const playback = video.play()
+  const audioPlayback = soundtrack.start()
   try {
-    await playback
+    const results = await Promise.allSettled([playback, audioPlayback])
+    if (results.some(result => result.status === 'rejected')) throw new Error('Media playback failed')
     started = true
     setup.hidden = true
     document.body.classList.add('screening')
     void keepAwake()
   } catch {
+    video.pause()
+    await soundtrack.pause()
     showSetup()
-    status.textContent = 'Playback could not start. Check the connection and try again.'
+    status.textContent = 'Video or sound could not start. Check the connection and try again.'
+  } finally {
+    starting = false
   }
   await fullscreen
 }
