@@ -1,0 +1,13 @@
+import {loadSettings,readSavedSettings,validateSettings,SETTINGS_KEY} from './config.js'
+const defaults=await loadSettings(false),form=document.querySelector('#settings'),message=document.querySelector('#message')
+const numeric=['fadeSeconds','holdSeconds','overlaySeconds','maxOverlays','jelliesPerTrigger','minJellies','maxJellies']
+function fill(config){for(const [key,value]of Object.entries(config)){if(form.elements[key])form.elements[key].value=value}form.elements.opacityPercent.value=Math.round(config.overlayOpacity*100);updateTiming()}
+function read(){const data={};for(const key of numeric)data[key]=Number(form.elements[key].value);for(const key of ['modelUrl','triggerVideoUrl'])data[key]=form.elements[key].value;data.overlayOpacity=Number(form.elements.opacityPercent.value)/100;return validateSettings(data)}
+const video=document.createElement('video');video.preload='metadata';video.muted=true;video.src='../assets/video/resonant-field-film/resonant_field_picture.mp4'
+function updateTiming(){const d=video.duration;if(Number.isFinite(d))document.querySelector('#timing').textContent=`영상 총길이 ${d.toFixed(2)}초 · 페이드 시작 ${Math.max(0,d-Number(form.elements.fadeSeconds.value)).toFixed(2)}초 · 한 회차 ${(d+Number(form.elements.holdSeconds.value)).toFixed(2)}초`}
+video.addEventListener('loadedmetadata',updateTiming);video.addEventListener('error',()=>document.querySelector('#timing').textContent='영상 길이를 읽지 못했습니다. 상영 파일을 확인하세요.')
+form.addEventListener('input',updateTiming);fill(readSavedSettings(defaults))
+form.addEventListener('submit',event=>{event.preventDefault();try{const config=read();localStorage.setItem(SETTINGS_KEY,JSON.stringify(config));message.textContent='저장했습니다. 시간·해파이는 다음 회차, 트리거영상은 다음 입력부터 적용됩니다.'}catch(error){message.textContent=error.message}})
+document.querySelector('#reset').addEventListener('click',()=>{try{localStorage.removeItem(SETTINGS_KEY);fill(defaults);message.textContent='파일 기본값으로 복원했습니다.'}catch(error){message.textContent=error.message}})
+document.querySelector('#export').addEventListener('click',()=>{try{const blob=new Blob([JSON.stringify(read(),null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='drifting-sea-settings.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}catch(error){message.textContent=error.message}})
+document.querySelector('#import').addEventListener('change',async event=>{try{const file=event.target.files[0];if(!file)return;if(file.size>20000)throw new Error('설정 파일이 너무 큽니다.');fill(validateSettings(JSON.parse(await file.text())));message.textContent='설정을 불러왔습니다. 확인 후 설정 저장을 누르세요.'}catch(error){message.textContent=error.message}finally{event.target.value=''}})

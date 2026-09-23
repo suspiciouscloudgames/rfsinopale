@@ -1,0 +1,22 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Drifting Sea · 운영 설정</title><link rel="stylesheet" href="./settings.css"></head>
+<body><main><a href="./">← 상영 화면</a><h1>상영 운영 설정</h1><p>시간과 해파이 설정은 다음 회차부터, 트리거영상 설정은 다음 입력부터 적용됩니다. 이 브라우저에 저장됩니다.</p>
+<form id="settings">
+<fieldset><legend>재생 주기</legend>
+<label>종료 전 페이드 시간 (초)<input name="fadeSeconds" type="number" min="0" max="3600" step="0.1" required></label>
+<label>완전 페이드 후 유지 시간 (초)<input name="holdSeconds" type="number" min="0" max="3600" step="0.1" required></label>
+<p id="timing">영상 길이 확인 중…</p><p>다음 영상 시작 순간 해파이 오브젝트가 전부 즉시 사라집니다.</p></fieldset>
+<fieldset><legend>트리거영상</legend>
+<label>불투명도 (%) · 0=안 보임 / 100=원본<input name="opacityPercent" type="number" min="0" max="100" step="1" required></label>
+<label>총 표시 시간 (초 · 증가:유지:감소 = 7:3:7)<input name="overlaySeconds" type="number" min="0.5" max="240" step="0.1" required></label>
+<label>동시 표시 수<input name="maxOverlays" type="number" min="1" max="4" step="1" required></label>
+<label>영상 목록 JSON 또는 단일 영상 경로<input name="triggerVideoUrl" type="text" required></label>
+<p>기본 목록은 assets/tiggerVideos의 4개 영상을 무작위로 재생합니다. 화면 전체의 무작위 지점에서 부드럽게 번져 나타났다가 사라집니다. 기본 17초: 7초 증가 → 3초 유지 → 7초 감소. 설정 불투명도는 최대 강도입니다. 입력이 몰리면 오래된 오버레이를 교체하며 트리거 횟수는 모두 집계합니다.</p></fieldset>
+<fieldset><legend>해파이 오브젝트</legend>
+<label>트리거 1회당 개체 수<input name="jelliesPerTrigger" type="number" min="1" max="10" step="1" required></label>
+<label>최소 개체 수<input name="minJellies" type="number" min="1" max="16" step="1" required></label>
+<label>최대 개체 수<input name="maxJellies" type="number" min="1" max="16" step="1" required></label>
+<label>GLB / glTF 모델 파일 경로<input name="modelUrl" type="text" required></label>
+<p>참여가 없어도 최소 개체를 표시합니다. 모델이 준비되지 않으면 해파이 실루엣으로 대체합니다.</p></fieldset>
+<div class="actions"><button type="submit">설정 저장</button><button id="reset" type="button">기본값 복원</button><button id="export" type="button">JSON 내보내기</button><label class="import">JSON 가져오기<input id="import" type="file" accept="application/json,.json"></label></div>
+<p id="message" role="status"></p>
+</form><p>상영 화면에서 O 키로 현재 회차·트리거 횟수·해파이 수를 확인하거나 리허설 도구를 열 수 있습니다. 다른 기기에는 설정 JSON을 가져오세요.</p></main><script type="module" src="./settings-ui.js"></script></body></html>

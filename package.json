@@ -1,0 +1,1 @@
+{"name":"drifting-sea-screening","private":true,"type":"module","scripts":{"test":"node --test tests/*.test.mjs","cache":"python3 scripts/update-screening-cache.py"}}

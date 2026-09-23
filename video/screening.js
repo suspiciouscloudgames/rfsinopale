@@ -1,6 +1,14 @@
+import { loadSettings, readSavedSettings, SETTINGS_KEY } from './config.js'
+import { ScreeningCycle } from './cycle.js'
+import { createOverlays } from './overlays.js'
+import { createJellies } from './jellies.js'
 import { createSoundtrack } from './soundtrack.js?v=audio1'
 const soundtrack = createSoundtrack()
 let starting = false
+const fileSettings = await loadSettings(false)
+let nextSettings = readSavedSettings(fileSettings)
+const cycle = new ScreeningCycle(nextSettings)
+const screenSession = crypto.randomUUID()
 
 // The new tablet supplies transparent layers; playback remains independent.
 const layerParams = new URLSearchParams(location.search)
@@ -10,6 +18,7 @@ const layerUrl = new URL(localPreview ? 'http://127.0.0.1:5190/' : '/gamepoem/',
 layerUrl.searchParams.set('display', '1')
 layerUrl.searchParams.set('v', 'phrase1')
 layerUrl.searchParams.set('room', layerRoom)
+layerUrl.searchParams.set('screenSession', screenSession)
 document.querySelector('#interaction-layers').src = layerUrl.href
 
 const video = document.querySelector('#film')
@@ -135,10 +144,18 @@ function showSetup() {
   start.focus()
 }
 
+function reportFullscreen() {
+  document.body.dataset.fullscreen=(document.fullscreenElement||document.webkitFullscreenElement)?'on':'off'
+}
+document.addEventListener('fullscreenchange',reportFullscreen)
+document.addEventListener('webkitfullscreenchange',reportFullscreen)
+reportFullscreen()
 async function enterFullscreen() {
-  if (!document.fullscreenElement && screen.requestFullscreen) {
-    try { await screen.requestFullscreen() } catch { /* Windowed screening remains available. */ }
-  }
+  const request=screen.requestFullscreen||screen.webkitRequestFullscreen
+  if(!(document.fullscreenElement||document.webkitFullscreenElement)&&request){
+    try { await request.call(screen); reportFullscreen() }
+    catch { document.body.dataset.fullscreen='unavailable' }
+  }else if(!request)document.body.dataset.fullscreen='unsupported'
 }
 
 async function startScreening() {
@@ -147,7 +164,7 @@ async function startScreening() {
   if (!subtitlesReady) void loadSubtitles()
   // Both calls begin in the user gesture so browsers can permit audio and fullscreen.
   const fullscreen = enterFullscreen()
-  const playback = video.play()
+  const playback = startOrResumeFilm()
   const audioPlayback = soundtrack.start()
   try {
     const results = await Promise.allSettled([playback, audioPlayback])
@@ -174,19 +191,143 @@ video.addEventListener('error', () => {
   showSetup()
   status.textContent = 'The film could not load. Check the connection, then reload this page.'
 })
-document.addEventListener('fullscreenchange', () => {
-  if (!document.fullscreenElement && started) showSetup()
-})
+// Escape leaves fullscreen through the browser without interrupting playback.
 document.addEventListener('keydown', event => {
-  if (event.key === 'Escape') showSetup()
-  if (event.key.toLowerCase() === 'f' && started) {
+  if(event.ctrlKey||event.metaKey||event.altKey||event.target.closest?.('input,textarea,select'))return
+  if ((event.code === 'KeyF' || event.key.toLowerCase() === 'f') && started) {
     event.preventDefault()
-    void startScreening()
+    void enterFullscreen()
   }
-  if (event.key === 'Enter' && event.target !== start) {
+  if (event.key === 'Enter' && !event.target.closest?.('button,a,summary,input,textarea,select')) {
     event.preventDefault()
     void startScreening()
   }
 })
-document.addEventListener('visibilitychange', () => void keepAwake())
+document.addEventListener('visibilitychange', () => { lastFrame = performance.now(); void keepAwake() })
 void loadSubtitles()
+
+
+const filmArea = document.querySelector('.film')
+const jellyRoot = document.querySelector('#jellies')
+const overlays = createOverlays(document.querySelector('#trigger-overlays'),message=>document.querySelector('#overlay-status').textContent=message)
+const jellies = createJellies(jellyRoot,message=>document.querySelector('#asset-status').textContent=message)
+void jellies.load(nextSettings.modelUrl)
+const operator = document.querySelector('#operator')
+operator.hidden = !layerParams.has('controls')
+let lastFrame = performance.now(), lastReport = 0, roundStarting = false, pendingVisuals = 0, previewId = 0
+let hiddenPause = false, fps = 0, fpsFrames = 0, fpsStart = performance.now()
+
+function renderCycle(now) {
+  const fade = cycle.frame(video.currentTime,video.duration)
+  filmArea.style.setProperty('--film-opacity',String(1-fade))
+  jellies.set(cycle.jellyCount(),fade)
+  jellies.frame(now)
+  overlays.frame()
+  document.body.dataset.phase=cycle.phase
+  document.body.dataset.round=String(cycle.round)
+  document.body.dataset.triggerCount=String(cycle.count)
+  if(now-lastReport>250){
+    lastReport=now
+    const duration=Number.isFinite(video.duration)?video.duration:0
+    document.querySelector('#runtime-status').textContent=`회차 ${cycle.round} · ${cycle.phase}\n영상 ${video.currentTime.toFixed(1)} / ${duration.toFixed(1)}초 · 대기 ${cycle.remaining.toFixed(1)}초\n문장트리거 ${cycle.count}회 · 다음 회차 ${cycle.pending}회\n해파이 ${fade>0?cycle.jellyCount():0}개 · 트리거영상 ${overlays.count}개 · ${fps} FPS\n현재 페이드 ${cycle.settings.fadeSeconds}초 / 대기 ${cycle.settings.holdSeconds}초\n다음 회차 페이드 ${nextSettings.fadeSeconds}초 / 대기 ${nextSettings.holdSeconds}초`
+  }
+}
+
+async function startOrResumeFilm() {
+  if(roundStarting)return
+  if(cycle.phase==='hold')return
+  if(cycle.phase!=='ready'&&cycle.phase!=='restarting')return video.play()
+  roundStarting=true
+  let callback=null, committed=false
+  const commit=()=>{
+    if(committed)return;committed=true
+    cycle.start(nextSettings)
+    overlays.clear()
+    // Hide every previous jelly in the same update that reveals the first frame.
+    jellies.set(0,0)
+    void jellies.load(cycle.settings.modelUrl)
+    filmArea.style.setProperty('--film-opacity','1')
+    while(pendingVisuals>0){overlays.play(nextSettings);pendingVisuals--}
+    renderCycle(performance.now())
+  }
+  try {
+    video.currentTime=0
+    if(video.requestVideoFrameCallback)callback=video.requestVideoFrameCallback(commit)
+    else video.addEventListener('playing',commit,{once:true})
+    await video.play()
+  }catch(error){
+    if(callback!==null)video.cancelVideoFrameCallback(callback)
+    video.removeEventListener('playing',commit)
+    throw error
+  }finally{roundStarting=false}
+}
+
+video.addEventListener('ended',()=>{
+  if(cycle.end()){
+    overlays.clear();turkishLine.textContent='';englishLine.textContent=''
+    lastFrame=performance.now();renderCycle(lastFrame)
+  }
+})
+function frame(now){
+  fpsFrames++
+  if(now-fpsStart>=1000){fps=Math.round(fpsFrames*1000/(now-fpsStart));fpsFrames=0;fpsStart=now;document.body.dataset.fps=String(fps)}
+  const dt=Math.max(0,(now-lastFrame)/1000);lastFrame=now
+  if(cycle.tick(dt,!document.hidden)){
+    void startOrResumeFilm().catch(()=>{showSetup();status.textContent='다음 영상 재생에 실패했습니다. 시작 버튼으로 다시 시도하세요.'})
+  }
+  renderCycle(now)
+  requestAnimationFrame(frame)
+}
+requestAnimationFrame(frame)
+
+function acceptTrigger(id){
+  if(!cycle.accept(id))return
+  if(cycle.phase==='playing'||cycle.phase==='fading')overlays.play(nextSettings)
+  else pendingVisuals=Math.min(pendingVisuals+1,nextSettings.maxOverlays)
+  renderCycle(performance.now())
+}
+window.addEventListener('message',event=>{
+  const iframe=document.querySelector('#interaction-layers')
+  if(event.origin!==layerUrl.origin||event.source!==iframe.contentWindow||event.data?.type!=='sentence-trigger'||event.data.room!==layerRoom)return
+  const trigger=event.data.event
+  if(!trigger||trigger.sessionId!==screenSession||typeof trigger.senderId!=='string'||trigger.senderId.length>100||!Number.isSafeInteger(trigger.sequence)||trigger.sequence<1||trigger.eventId!==`${trigger.senderId}:${trigger.sequence}`)return
+  acceptTrigger(trigger.eventId)
+  iframe.contentWindow.postMessage({type:'sentence-ack',sessionId:screenSession,eventId:trigger.eventId},layerUrl.origin)
+})
+window.addEventListener('storage',event=>{if(event.key===SETTINGS_KEY||event.key===null)nextSettings=readSavedSettings(fileSettings)})
+document.addEventListener('keydown',event=>{
+  if((event.code==='KeyT'||event.key.toLowerCase()==='t')&&!event.repeat&&!event.ctrlKey&&!event.metaKey&&!event.altKey&&!event.target.closest?.('input,textarea,select,[contenteditable]:not([contenteditable="false"])')){
+    event.preventDefault()
+    triggerRehearsal()
+  }
+  if((event.code==='KeyE'||event.key.toLowerCase()==='e')&&!event.repeat&&!event.ctrlKey&&!event.metaKey&&!event.altKey&&!event.target.closest?.('input,textarea,select,[contenteditable]:not([contenteditable="false"])')){
+    event.preventDefault()
+    previewFade()
+  }
+  if((event.code==='KeyO'||event.key.toLowerCase()==='o')&&!event.ctrlKey&&!event.metaKey&&!event.target.closest?.('input,textarea,select')){operator.hidden=!operator.hidden}
+})
+// Rehearsal only: seek this screening instance; never change settings or send events.
+function previewFade(){
+  if((cycle.phase==='playing'||cycle.phase==='fading')&&Number.isFinite(video.duration)){
+    video.currentTime=Math.min(video.duration,Math.max(0,video.duration-Math.min(video.duration,cycle.settings.fadeSeconds)+.1))
+  }
+}
+document.querySelector('#preview-fade').addEventListener('click',previewFade)
+document.querySelector('#preview-end').addEventListener('click',()=>{
+  if(cycle.phase==='playing'||cycle.phase==='fading')video.currentTime=Math.max(0,video.duration-2)
+})
+function triggerRehearsal(){acceptTrigger(`rehearsal:${++previewId}`)}
+document.querySelector('#preview-trigger').addEventListener('click',triggerRehearsal)
+document.addEventListener('visibilitychange',()=>{
+  if(document.hidden){hiddenPause=!video.paused;if(hiddenPause)video.pause()}
+  else if(hiddenPause){hiddenPause=false;video.play().catch(()=>showSetup())}
+})
+
+// Check for a new static release without interrupting an active screening.
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('../sw.js',{scope:'../',updateViaCache:'none'}).then(registration=>registration.update()).catch(()=>{})
+  navigator.serviceWorker.addEventListener('controllerchange',()=>{
+    if(!started)location.reload()
+    else document.querySelector('#overlay-status').textContent='업데이트가 준비되었습니다. 상영 후 새로고침하면 적용됩니다.'
+  })
+}

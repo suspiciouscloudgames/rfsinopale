@@ -6,13 +6,15 @@
   <meta name="theme-color" content="#000000">
   <title>Drifting Sea - Loopntale | Video</title>
   <link rel="icon" href="../assets/icon-192.png">
-  <link rel="stylesheet" href="./screening.css?v=phrase1">
+  <link rel="stylesheet" href="./screening.css?v=cycle1">
 </head>
 <body>
   <main id="screen" aria-label="Drifting Sea film screening">
     <div class="film">
-      <video id="film" src="../assets/video/resonant-field-film/resonant_field_picture.mp4" loop playsinline preload="auto" disablepictureinpicture aria-label="Drifting Sea film"></video>
+      <video id="film" src="../assets/video/resonant-field-film/resonant_field_picture.mp4" playsinline preload="auto" disablepictureinpicture aria-label="Drifting Sea film"></video>
+      <div id="trigger-overlays" aria-hidden="true"></div>
       <iframe id="interaction-layers" title="Interactive text layers" aria-hidden="true" tabindex="-1"></iframe>
+      <div id="jellies" aria-hidden="true"></div>
       <div id="subtitles" class="subtitles">
         <div id="subtitle-tr" class="subtitle-line subtitle-tr" lang="tr"></div>
         <div id="subtitle-en" class="subtitle-line subtitle-en" lang="en"></div>
@@ -24,7 +26,19 @@
       </button>
       <p id="status" role="status"></p>
     </section>
+  <aside id="operator" hidden aria-label="상영 운영">
+    <strong>상영 운영</strong><output id="runtime-status" aria-live="off"></output>
+    <p id="asset-status"></p><p id="overlay-status"></p>
+    <a href="./settings.html" target="_blank" rel="noopener">운영 설정 열기</a>
+    <details><summary>리허설 도구 · 현재 재생 위치 변경</summary>
+      <button id="preview-fade">페이드 시작으로 이동</button>
+      <button id="preview-end">종료 2초 전으로 이동</button>
+      <button id="preview-trigger">테스트 문장트리거 1회</button>
+    </details>
+    <small>T: 테스트 문장트리거 · E: 테스트 페이드 시작 · O: 운영 화면 닫기 · Esc: 전체화면 해제 · F: 전체화면</small>
+  </aside>
   </main>
-  <script type="module" src="./screening.js?v=audio1"></script>
+  <script type="importmap">{"imports":{"three":"./vendor/three/three.module.js"}}</script>
+  <script type="module" src="./screening.js?v=cycle1"></script>
 </body>
 </html>

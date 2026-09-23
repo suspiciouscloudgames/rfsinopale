@@ -1,0 +1,14 @@
+{
+  "fadeSeconds": 60,
+  "holdSeconds": 30,
+  "overlayOpacity": 0.65,
+  "overlayOpacityVersion": 3,
+  "overlaySeconds": 17,
+  "overlayTimingVersion": 3,
+  "maxOverlays": 3,
+  "jelliesPerTrigger": 1,
+  "minJellies": 1,
+  "maxJellies": 16,
+  "modelUrl": "../animation/jellyfish_slow_swim.glb",
+  "triggerVideoUrl": "./trigger-videos.json"
+}
