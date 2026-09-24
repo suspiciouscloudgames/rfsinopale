@@ -1,11 +1,11 @@
-// The WAV contains the complete music/fades/15-second sea interval.
+// The artist-supplied final track repeats at its original speed, without added audio.
 // A decoded looping buffer avoids timer drift and media-element loop gaps.
 export function createSoundtrack() {
   let context = null
   let source = null
   let decoded = null
   let loading = null
-  const url = new URL('../assets/audio/stuck-sea-loop.wav?v=interlude15', import.meta.url)
+  const url = new URL('../assets/audio/stuck-final.mp3?v=final1', import.meta.url)
   function load() {
     if (!loading) {
       loading = fetch(url).then(response => {

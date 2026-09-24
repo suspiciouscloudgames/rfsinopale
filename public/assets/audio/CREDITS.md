@@ -1,3 +1,9 @@
+# Current screening soundtrack
+
+`stuck-final.mp3` is the unmodified **Stuck (Final).mp3** supplied by the artist. It loops through a decoded Web Audio buffer at its original speed. No additional waves, fades or silent interval are added. Audio is played only by the upper screen.
+
+## Previous soundtrack (retained, not played)
+
 # Main screening soundtrack
 
 - Music: `Stuck.mp3`, supplied by the artist for this exhibition.
