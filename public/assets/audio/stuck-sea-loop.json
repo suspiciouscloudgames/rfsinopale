@@ -1,0 +1,11 @@
+{
+  "musicSeconds": 16.06530612244898,
+  "fadeInSeconds": 5,
+  "fadeOutSeconds": 5,
+  "wavesOnlySeconds": 15,
+  "loopSeconds": 31.06530612244898,
+  "peak": 11000,
+  "gapMusicPeak": 0,
+  "addedWaveGainDuringFullMusic": 0,
+  "seamSampleJump": 582
+}

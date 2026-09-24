@@ -1,1 +1,7 @@
 clips/** filter=lfs diff=lfs merge=lfs -text
+
+floor-clips/*.mp4 filter=lfs diff=lfs merge=lfs -text
+floor-clips/*.mov filter=lfs diff=lfs merge=lfs -text
+floor-clips/*.MOV filter=lfs diff=lfs merge=lfs -text
+public/assets/**/*.mp4 filter=lfs diff=lfs merge=lfs -text
+public/assets/**/*.wav filter=lfs diff=lfs merge=lfs -text

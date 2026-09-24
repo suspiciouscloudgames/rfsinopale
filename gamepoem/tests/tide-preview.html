@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head><base href="/video/">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <title>Drifting Sea - Loopntale | Video</title>
+  <link rel="icon" href="../assets/icon-192.png">
+  <link rel="stylesheet" href="./screening.css?v=phrase1">
+</head>
+<body>
+  <main id="screen" aria-label="Drifting Sea film screening">
+    <button style="position:absolute;z-index:100;top:0;left:0;background:white;color:black" onclick="document.querySelector('#film').currentTime=document.querySelector('#film').duration*.75">Three quarters</button><div class="film">
+      <video id="film" src="../assets/video/resonant-field-film/resonant_field_picture.mp4" playsinline preload="auto" disablepictureinpicture aria-label="Drifting Sea film"></video>
+      <iframe id="interaction-layers" title="Interactive text layers" aria-hidden="true" tabindex="-1"></iframe>
+      <div id="subtitles" class="subtitles">
+        <div id="subtitle-tr" class="subtitle-line subtitle-tr" lang="tr"></div>
+        <div id="subtitle-en" class="subtitle-line subtitle-en" lang="en"></div>
+      </div>
+    </div>
+    <section id="setup" class="setup" aria-label="Start screening">
+      <button id="start" type="button" aria-label="Start screening">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M11 6 L27 16 L11 26 Z" /></svg>
+      </button>
+      <p id="status" role="status"></p>
+    </section>
+  </main>
+  <script type="module" src="./screening.js?v=tide1"></script>
+</body>
+</html>

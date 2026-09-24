@@ -1,0 +1,31 @@
+:root { color-scheme: dark; font-family: Arial, sans-serif; background: #000; color: #f0f0ed; }
+* { box-sizing: border-box; }
+html, body, #screen { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #000; }
+#screen { position: fixed; inset: 0; }
+body.screening { cursor: none; }
+.film { position: absolute; inset: 0; margin: auto; width: min(100vw, 160vh); height: min(100vh, 62.5vw); overflow: hidden; }
+video { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.subtitles { position: absolute; left: 5%; right: 5%; bottom: 12%; display: grid; gap: clamp(10px, 1.2vh, 20px); text-align: center; color: #fff; text-shadow: 0 1px 2px #000, 0 3px 6px #000e, 0 0 14px #0009; pointer-events: none; }
+.subtitle-line { white-space: nowrap; line-height: 1.35; font-weight: 400; }
+.subtitle-tr { font-size: clamp(20px, min(3.6vh, 2.7vw), 64px); color: #fff4df; }
+.subtitle-en { font-size: clamp(19px, min(3.3vh, 2.48vw), 60px); color: #bce9e5; }
+.subtitles.dark { color: #111; text-shadow: 0 1px 3px #ffffff80; }
+.subtitles.dark .subtitle-tr { color: #241d13; }
+.subtitles.dark .subtitle-en { color: #174b4a; }
+.setup { position: absolute; inset: 0; display: grid; place-items: center; background: #000; }
+.setup[hidden] { display: none; }
+#start { display: grid; place-items: center; width: 80px; height: 80px; padding: 0; border: 1px solid #ffffff70; border-radius: 50%; background: transparent; color: #f0f0ed; cursor: pointer; }
+#start svg { width: 32px; height: 32px; fill: currentColor; }
+#start:hover { background: #ffffff12; border-color: #fff; }
+#start:focus-visible { outline: 2px solid #bce9e5; outline-offset: 6px; }
+#status { position: absolute; top: calc(50% + 64px); left: 10%; right: 10%; margin: 0; text-align: center; font-size: 14px; line-height: 1.6; color: #f4c7a2; }
+#status:empty { display: none; }
+
+#interaction-layers { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: transparent; pointer-events: none; }
+
+/* Temporary Korean screening test. Set data-language="bilingual" to restore TR/EN. */
+.subtitle-ko { font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-size: clamp(20px, min(3.6vh, 2.7vw), 64px); color: #fff4df; }
+.subtitles.dark .subtitle-ko { color: #241d13; }
+.subtitles[data-language="ko"] .subtitle-tr,
+.subtitles[data-language="ko"] .subtitle-en { display: none; }
+.subtitles:not([data-language="ko"]) .subtitle-ko { display: none; }

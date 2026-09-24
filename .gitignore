@@ -1,2 +1,6 @@
 .DS_Store
 renders/
+
+# Separate canonical tablet repository (clone here locally).
+gamepoem/site/
+.DS_Store

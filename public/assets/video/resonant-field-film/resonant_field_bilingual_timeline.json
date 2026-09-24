@@ -1,0 +1,807 @@
+{
+  "duration": 960.6,
+  "readingWordsPerMinute": 90,
+  "minimumCueSeconds": 7,
+  "subtitles": [
+    {
+      "id": 1,
+      "sentenceId": 1,
+      "start": 6.0,
+      "end": 13.0,
+      "tr": "Uzaklara bakan insanlar, kendi içlerindeki en",
+      "en": "Looking into the distance, humans encountered something"
+    },
+    {
+      "id": 2,
+      "sentenceId": 1,
+      "start": 13.6,
+      "end": 21.6,
+      "tr": "mahrem şeye benzeyen bir şeyle karşılaştı.",
+      "en": "that resembled what was most intimate within themselves."
+    },
+    {
+      "id": 3,
+      "sentenceId": 2,
+      "start": 23.1,
+      "end": 30.1,
+      "tr": "Galaksilerden gelen ışığın ince kırılmalarını inceleyen",
+      "en": "Researchers analyzing minute refractions of light"
+    },
+    {
+      "id": 4,
+      "sentenceId": 2,
+      "start": 30.7,
+      "end": 37.7,
+      "tr": "araştırmacılar, açıklanamayan bir sinyal keşfetti.",
+      "en": "from galaxies discovered an unexplained signal."
+    },
+    {
+      "id": 5,
+      "sentenceId": 3,
+      "start": 39.2,
+      "end": 47.2,
+      "tr": "Dünya’daki ölçüm cihazları da benzer sinyaller yakaladı ve bu",
+      "en": "Similar signals were also detected by instruments on Earth"
+    },
+    {
+      "id": 6,
+      "sentenceId": 3,
+      "start": 47.8,
+      "end": 55.8,
+      "tr": "sinyallerin insan duygularındaki değişimlerle ilişkili olduğu görüldü.",
+      "en": "and showed a correlation with changes in human emotion."
+    },
+    {
+      "id": 7,
+      "sentenceId": 4,
+      "start": 57.3,
+      "end": 64.3,
+      "tr": "Sinyaller, o duyguları hisseden kişi",
+      "en": "The signals remained detectable even after the"
+    },
+    {
+      "id": 8,
+      "sentenceId": 4,
+      "start": 64.9,
+      "end": 72.9,
+      "tr": "oradan ayrıldıktan sonra da tespit edildi.",
+      "en": "person who had felt those emotions had left."
+    },
+    {
+      "id": 9,
+      "sentenceId": 5,
+      "start": 74.4,
+      "end": 82.4,
+      "tr": "Bu keşifle birlikte duygular, kişinin iç dünyasıyla",
+      "en": "Following this discovery, emotion began to be understood as"
+    },
+    {
+      "id": 10,
+      "sentenceId": 5,
+      "start": 83.0,
+      "end": 93.0,
+      "tr": "sınırlı kalmayan, bedenin dışındaki mekânda da izler",
+      "en": "a phenomenon that left traces in the space beyond the body,"
+    },
+    {
+      "id": 11,
+      "sentenceId": 5,
+      "start": 93.6,
+      "end": 101.6,
+      "tr": "bırakan bir olgu olarak ele alınmaya başlandı.",
+      "en": "rather than being confined to an individual’s inner life."
+    },
+    {
+      "id": 12,
+      "sentenceId": 6,
+      "start": 103.1,
+      "end": 110.1,
+      "tr": "Duyguların izleri aynı yerde kalıp başka",
+      "en": "Emotional traces lingered in the same place,"
+    },
+    {
+      "id": 13,
+      "sentenceId": 6,
+      "start": 110.7,
+      "end": 117.7,
+      "tr": "duyguların izleriyle üst üste bindi.",
+      "en": "overlapping with those of other emotions."
+    },
+    {
+      "id": 14,
+      "sentenceId": 7,
+      "start": 119.2,
+      "end": 127.2,
+      "tr": "Araştırmacılar, duyguların mekânda birikip üst üste",
+      "en": "Researchers called the fields formed by the accumulation"
+    },
+    {
+      "id": 15,
+      "sentenceId": 7,
+      "start": 127.8,
+      "end": 135.8,
+      "tr": "gelmesiyle oluşan alanlara “rezonans alanı” adını verdi.",
+      "en": "and overlap of emotions in space “resonant fields.”"
+    },
+    {
+      "id": 16,
+      "sentenceId": 8,
+      "start": 137.3,
+      "end": 146.3,
+      "tr": "Ancak bu alanların yalnızca insan duygularıyla mı oluştuğu,",
+      "en": "Yet it remained unclear whether these fields were formed solely"
+    },
+    {
+      "id": 17,
+      "sentenceId": 8,
+      "start": 146.9,
+      "end": 154.9,
+      "tr": "başka varlıklardan da etkilenip etkilenmediği ve uzayda keşfedilen",
+      "en": "by human emotions, whether other beings also influenced them,"
+    },
+    {
+      "id": 18,
+      "sentenceId": 8,
+      "start": 155.5,
+      "end": 165.5,
+      "tr": "örüntülerle nasıl bir ilişkisi olduğu hâlâ bilinmiyordu.",
+      "en": "and how they were related to the patterns discovered in space."
+    },
+    {
+      "id": 19,
+      "sentenceId": 9,
+      "start": 168.5,
+      "end": 175.5,
+      "tr": "Rezonans alanlarını gözlemleyen araştırmacılar,",
+      "en": "Researchers observing resonant fields"
+    },
+    {
+      "id": 20,
+      "sentenceId": 9,
+      "start": 176.1,
+      "end": 183.1,
+      "tr": "bu alanların içinde yaşayan canlılar keşfetti.",
+      "en": "discovered living beings within them."
+    },
+    {
+      "id": 21,
+      "sentenceId": 10,
+      "start": 184.6,
+      "end": 194.6,
+      "tr": "Bu bilinmeyen varlıklar, bilinen hiçbir biyolojik türe ait olarak",
+      "en": "These unknown beings could not be classified as belonging to any"
+    },
+    {
+      "id": 22,
+      "sentenceId": 10,
+      "start": 195.2,
+      "end": 205.2,
+      "tr": "sınıflandırılamıyordu ve uzun zamandır var oldukları tahmin ediliyordu.",
+      "en": "known species and were thought to have existed for a long time."
+    },
+    {
+      "id": 23,
+      "sentenceId": 11,
+      "start": 206.7,
+      "end": 214.7,
+      "tr": "Ne oldukları tam olarak anlaşılmadan önce kişisel dedektörler",
+      "en": "Before their nature was fully understood, personal detectors"
+    },
+    {
+      "id": 24,
+      "sentenceId": 11,
+      "start": 215.3,
+      "end": 223.3,
+      "tr": "ve hizmet uygulamaları yaygınlaştı; insanlar bu bilinmeyen",
+      "en": "and service apps became widely available, and people"
+    },
+    {
+      "id": 25,
+      "sentenceId": 11,
+      "start": 223.9,
+      "end": 230.9,
+      "tr": "varlıkları dedektörler aracılığıyla gözlemlemeye başladı.",
+      "en": "began observing these unknown beings through detectors."
+    },
+    {
+      "id": 26,
+      "sentenceId": 12,
+      "start": 232.4,
+      "end": 242.4,
+      "tr": "İnsanlar onları kendi evlerinde ve sık sık bulundukları yerlerde",
+      "en": "People found them in their homes and in places they frequented,"
+    },
+    {
+      "id": 27,
+      "sentenceId": 12,
+      "start": 243.0,
+      "end": 251.0,
+      "tr": "keşfettiler, onlara isim verdiler ve uygulamaya kaydettiler.",
+      "en": "gave them names, and registered them in apps."
+    },
+    {
+      "id": 28,
+      "sentenceId": 13,
+      "start": 252.5,
+      "end": 260.5,
+      "tr": "Gündelik yaşamda gözlemlenen ve ilişki kurulan bu",
+      "en": "These emergent entities, which people observed and formed relationships"
+    },
+    {
+      "id": 29,
+      "sentenceId": 13,
+      "start": 261.1,
+      "end": 270.1,
+      "tr": "beliren varlıklara “yoldaş varlık” denmeye başlandı.",
+      "en": "with in everyday life, came to be called companion entities."
+    },
+    {
+      "id": 30,
+      "sentenceId": 14,
+      "start": 271.6,
+      "end": 278.6,
+      "tr": "Uygulama, sinyallerin şiddetini, süresini, dağılımını",
+      "en": "The apps translated signal strength and duration,"
+    },
+    {
+      "id": 31,
+      "sentenceId": 14,
+      "start": 279.2,
+      "end": 286.2,
+      "tr": "ve tekrarlanma özelliklerini kişilik, ruh hâli,",
+      "en": "distribution and recurrence into the language"
+    },
+    {
+      "id": 32,
+      "sentenceId": 14,
+      "start": 286.8,
+      "end": 293.8,
+      "tr": "yakınlık ve bağlılık diline çevirerek gösteriyordu.",
+      "en": "of personality, mood, intimacy, and attachment."
+    },
+    {
+      "id": 33,
+      "sentenceId": 15,
+      "start": 295.3,
+      "end": 302.3,
+      "tr": "Bilinmeyen yoldaş varlıklar, ekranda bulunabilen",
+      "en": "The unknown companion entities became characters"
+    },
+    {
+      "id": 34,
+      "sentenceId": 15,
+      "start": 302.9,
+      "end": 311.9,
+      "tr": "ve bakımı üstlenilebilen karakterlere dönüştü.",
+      "en": "that could be found and cared for on a screen."
+    },
+    {
+      "id": 35,
+      "sentenceId": 16,
+      "start": 314.9,
+      "end": 324.9,
+      "tr": "Buraya vardığın gün, sağanak yağmurdan sığındığın",
+      "en": "On the day you arrived here, there was a dog stretched"
+    },
+    {
+      "id": 36,
+      "sentenceId": 16,
+      "start": 325.5,
+      "end": 333.5,
+      "tr": "yerde boylu boyunca uzanmış bir köpek vardı.",
+      "en": "out where you took shelter from the pouring rain."
+    },
+    {
+      "id": 37,
+      "sentenceId": 17,
+      "start": 335.0,
+      "end": 342.0,
+      "tr": "Dar saçağın altında köpek gözlerini açtı",
+      "en": "Under the narrow eaves, the dog opened"
+    },
+    {
+      "id": 38,
+      "sentenceId": 17,
+      "start": 342.6,
+      "end": 349.6,
+      "tr": "ama sana yer açmak için kıpırdamadı.",
+      "en": "its eyes but did not move aside."
+    },
+    {
+      "id": 39,
+      "sentenceId": 18,
+      "start": 351.1,
+      "end": 359.1,
+      "tr": "Yabancı bir şehirde her gün karşılaştığın",
+      "en": "In an unfamiliar city, the face of the dog"
+    },
+    {
+      "id": 40,
+      "sentenceId": 18,
+      "start": 359.7,
+      "end": 366.7,
+      "tr": "köpeğin yüzü tanıdık gelmeye başladı.",
+      "en": "you encountered each day became familiar."
+    },
+    {
+      "id": 41,
+      "sentenceId": 19,
+      "start": 368.2,
+      "end": 377.2,
+      "tr": "Yattığı yerden kuyruğunu salladığı için",
+      "en": "Some days, the wag of its tail as it lay"
+    },
+    {
+      "id": 42,
+      "sentenceId": 19,
+      "start": 377.8,
+      "end": 384.8,
+      "tr": "yanından geçip gidemediğin günler oldu.",
+      "en": "there kept you from simply walking past."
+    },
+    {
+      "id": 43,
+      "sentenceId": 20,
+      "start": 386.3,
+      "end": 394.3,
+      "tr": "Aynı köpeğe verilen pek çok isim arasında",
+      "en": "Among the many names people used for the"
+    },
+    {
+      "id": 44,
+      "sentenceId": 20,
+      "start": 394.9,
+      "end": 402.9,
+      "tr": "senin ona verdiğin isim de vardı.",
+      "en": "same dog was the name you had given it."
+    },
+    {
+      "id": 45,
+      "sentenceId": 21,
+      "start": 404.4,
+      "end": 416.4,
+      "tr": "Getirdiğin yiyeceği, birinin bıraktığı su kabının yanına koydun.",
+      "en": "You set down the food you had brought beside a water bowl someone had left."
+    },
+    {
+      "id": 46,
+      "sentenceId": 22,
+      "start": 417.9,
+      "end": 428.9,
+      "tr": "Köpeğin hep dinlendiği yerde bir yoldaş varlık keşfettin.",
+      "en": "In the spot where the dog always rested, you discovered a companion entity."
+    },
+    {
+      "id": 47,
+      "sentenceId": 23,
+      "start": 431.9,
+      "end": 438.9,
+      "tr": "Bu, sabit tipte bir yoldaş varlıktı.",
+      "en": "It was a fixed-type companion entity."
+    },
+    {
+      "id": 48,
+      "sentenceId": 24,
+      "start": 440.4,
+      "end": 448.4,
+      "tr": "Sabit tipteki yoldaş varlıkların bağlılık, güven ve eski",
+      "en": "Fixed-type companion entities are known to live around"
+    },
+    {
+      "id": 49,
+      "sentenceId": 24,
+      "start": 449.0,
+      "end": 456.0,
+      "tr": "kayıpların yarattığı duyguların çevresinde yaşadığı bilinir.",
+      "en": "feelings of attachment, trust, and long-standing loss."
+    },
+    {
+      "id": 50,
+      "sentenceId": 25,
+      "start": 457.5,
+      "end": 466.5,
+      "tr": "O yoldaş varlığın köpekten mi, yoksa onu izlerken",
+      "en": "You could not tell whether it had arisen from the"
+    },
+    {
+      "id": 51,
+      "sentenceId": 25,
+      "start": 467.1,
+      "end": 476.1,
+      "tr": "hissettiğin duygulardan mı doğduğunu bilemiyordun.",
+      "en": "dog or from your own feelings as you watched it."
+    },
+    {
+      "id": 52,
+      "sentenceId": 26,
+      "start": 477.6,
+      "end": 488.6,
+      "tr": "Köpeğe rastlamadığın günlerde, orada kalan yoldaş varlığı",
+      "en": "On days when you did not encounter the dog, you examined the companion"
+    },
+    {
+      "id": 53,
+      "sentenceId": 26,
+      "start": 489.2,
+      "end": 500.2,
+      "tr": "inceleyerek köpeğin nasıl olduğunu tahmin etmeye çalışıyordun.",
+      "en": "entity that remained there and tried to imagine how the dog had been."
+    },
+    {
+      "id": 54,
+      "sentenceId": 27,
+      "start": 501.7,
+      "end": 508.7,
+      "tr": "Gözlemler tekrarlandıkça yoldaş varlığın sinyali istikrarlı",
+      "en": "With repeated observation, the entity’s signal"
+    },
+    {
+      "id": 55,
+      "sentenceId": 27,
+      "start": 509.3,
+      "end": 517.3,
+      "tr": "hâle geliyor, uygulamadaki yakınlık puanı da yükseliyordu.",
+      "en": "grew steadier, and the app’s intimacy score rose."
+    },
+    {
+      "id": 56,
+      "sentenceId": 28,
+      "start": 518.8,
+      "end": 525.8,
+      "tr": "Yoldaş varlığı gözlemlemeyi sürdürmek,",
+      "en": "To keep observing the companion entity was"
+    },
+    {
+      "id": 57,
+      "sentenceId": 28,
+      "start": 526.4,
+      "end": 534.4,
+      "tr": "onu tanınabilir bir biçimde tutmak anlamına da geliyordu.",
+      "en": "also to hold it in a recognizable form."
+    },
+    {
+      "id": 58,
+      "sentenceId": 29,
+      "start": 537.4,
+      "end": 544.4,
+      "tr": "Bir gün köpek ortalıkta görünmemeye başladı.",
+      "en": "One day, the dog stopped appearing."
+    },
+    {
+      "id": 59,
+      "sentenceId": 30,
+      "start": 545.9,
+      "end": 552.9,
+      "tr": "Nereye gittiğini bilen kimse yoktu.",
+      "en": "No one knew where it had gone."
+    },
+    {
+      "id": 60,
+      "sentenceId": 31,
+      "start": 554.4,
+      "end": 561.4,
+      "tr": "Köpek geri dönmediği süre boyunca",
+      "en": "Even as the dog remained absent,"
+    },
+    {
+      "id": 61,
+      "sentenceId": 31,
+      "start": 562.0,
+      "end": 570.0,
+      "tr": "da yoldaş varlık aynı yerde kaldı.",
+      "en": "the companion entity remained in the same spot."
+    },
+    {
+      "id": 62,
+      "sentenceId": 32,
+      "start": 571.5,
+      "end": 579.5,
+      "tr": "O varlığın o köpek olmadığını biliyordun, yine de",
+      "en": "You knew that the entity was not the dog,"
+    },
+    {
+      "id": 63,
+      "sentenceId": 32,
+      "start": 580.1,
+      "end": 589.1,
+      "tr": "sanki bir şey henüz gitmemiş gibi hissediyordun.",
+      "en": "yet it felt as though something had not quite left."
+    },
+    {
+      "id": 64,
+      "sentenceId": 33,
+      "start": 590.6,
+      "end": 599.6,
+      "tr": "Oradaki yoldaş varlık her zaman sakin, huzurlu ve sevecendi.",
+      "en": "The companion entity there was always composed, peaceful, and gentle."
+    },
+    {
+      "id": 65,
+      "sentenceId": 34,
+      "start": 601.1,
+      "end": 609.1,
+      "tr": "Onun da kaybolabileceği endişesiyle yaşamaya başladın.",
+      "en": "You began to worry that it, too, might disappear."
+    },
+    {
+      "id": 66,
+      "sentenceId": 35,
+      "start": 610.6,
+      "end": 619.6,
+      "tr": "O rezonans alanına başka etkiler katmak istemediğin için,",
+      "en": "Not wanting to introduce other influences into the resonant field,"
+    },
+    {
+      "id": 67,
+      "sentenceId": 35,
+      "start": 620.2,
+      "end": 630.2,
+      "tr": "oradayken mümkün olduğunca sakin kalmaya özen gösteriyordun.",
+      "en": "you tried to remain as calm as possible while you were there."
+    },
+    {
+      "id": 68,
+      "sentenceId": 36,
+      "start": 631.7,
+      "end": 641.7,
+      "tr": "Öfkeli ya da çok üzgün olduğun günlerde, oraya yaklaşmadan önce",
+      "en": "On days when you were angry or very sad, you practiced"
+    },
+    {
+      "id": 69,
+      "sentenceId": 36,
+      "start": 642.3,
+      "end": 650.3,
+      "tr": "bu duyguları başka bir yerde bırakıp gelmeye çalışıyordun.",
+      "en": "leaving those feelings elsewhere before approaching the spot."
+    },
+    {
+      "id": 70,
+      "sentenceId": 37,
+      "start": 651.8,
+      "end": 660.8,
+      "tr": "Çünkü kendi duyguların oradakilere karışırsa,",
+      "en": "Because it seemed that if your feelings mingled with what"
+    },
+    {
+      "id": 71,
+      "sentenceId": 37,
+      "start": 661.4,
+      "end": 669.4,
+      "tr": "orada kalan yoldaş varlık değişecekmiş gibi geliyordu.",
+      "en": "was there, the companion entity that remained might change."
+    },
+    {
+      "id": 72,
+      "sentenceId": 38,
+      "start": 672.4,
+      "end": 685.4,
+      "tr": "Bu şehirden ayrılman gerektiğinin bildirildiği gün, tek başına",
+      "en": "On the day you were told you had to leave this city, you were walking home"
+    },
+    {
+      "id": 73,
+      "sentenceId": 38,
+      "start": 686.0,
+      "end": 698.0,
+      "tr": "eve dönerken limana sürüklenen bir denizanası sürüsünü gördün.",
+      "en": "alone when you saw a mass of jellyfish that had drifted into the harbor."
+    },
+    {
+      "id": 74,
+      "sentenceId": 39,
+      "start": 699.5,
+      "end": 706.5,
+      "tr": "Denizanasıları gövdelerini kasıp açarak aynı",
+      "en": "Contracting and expanding their bodies, the jellyfish"
+    },
+    {
+      "id": 75,
+      "sentenceId": 39,
+      "start": 707.1,
+      "end": 715.1,
+      "tr": "dalgalarla durmaksızın sürüklenip geliyordu.",
+      "en": "kept drifting in on the same waves, without end."
+    },
+    {
+      "id": 76,
+      "sentenceId": 40,
+      "start": 716.6,
+      "end": 724.6,
+      "tr": "Toplandıkları yerde, köpeğin dinlendiği yerdeki",
+      "en": "Where they gathered, a signal similar to the"
+    },
+    {
+      "id": 77,
+      "sentenceId": 40,
+      "start": 725.2,
+      "end": 733.2,
+      "tr": "sinyale benzer bir sinyal tespit edildi.",
+      "en": "one at the dog’s resting place was detected."
+    },
+    {
+      "id": 78,
+      "sentenceId": 41,
+      "start": 734.7,
+      "end": 744.7,
+      "tr": "Denizanası topluluğunun yoldaş varlığı da sabit tipteydi",
+      "en": "The companion entity among the jellyfish was also a fixed type,"
+    },
+    {
+      "id": 79,
+      "sentenceId": 41,
+      "start": 745.3,
+      "end": 753.3,
+      "tr": "ve köpeğin bulunduğu yerdeki varlığa çok benziyordu.",
+      "en": "closely resembling the one at the dog’s spot."
+    },
+    {
+      "id": 80,
+      "sentenceId": 42,
+      "start": 754.8,
+      "end": 762.8,
+      "tr": "Akıntıların getirdiği denizanasılarının yanında",
+      "en": "Beside the jellyfish carried in by the currents,"
+    },
+    {
+      "id": 81,
+      "sentenceId": 42,
+      "start": 763.4,
+      "end": 771.4,
+      "tr": "neler birikip üst üste gelmiş ve bir yerde",
+      "en": "what had accumulated and overlapped to become a"
+    },
+    {
+      "id": 82,
+      "sentenceId": 42,
+      "start": 772.0,
+      "end": 781.0,
+      "tr": "uzun süre kalan bir yoldaş varlığa dönüşmüştü?",
+      "en": "companion entity that stayed in one place for so long?"
+    },
+    {
+      "id": 83,
+      "sentenceId": 43,
+      "start": 784.0,
+      "end": 792.0,
+      "tr": "İnsanlar limana sürüklenen denizanası sürüsünü bir istila",
+      "en": "People called the influx of jellyfish into the"
+    },
+    {
+      "id": 84,
+      "sentenceId": 43,
+      "start": 792.6,
+      "end": 800.6,
+      "tr": "olarak adlandırıyordu, ama dalgaların sınırları yoktur.",
+      "en": "harbor an invasion, but waves have no borders."
+    },
+    {
+      "id": 85,
+      "sentenceId": 44,
+      "start": 802.1,
+      "end": 812.1,
+      "tr": "Evinin burada olması sana kalma hakkı vermiyordu.",
+      "en": "Having a home here did not give you the right to stay."
+    },
+    {
+      "id": 86,
+      "sentenceId": 45,
+      "start": 813.6,
+      "end": 821.6,
+      "tr": "Ayrılacağın tarih belirlendikten sonra da her",
+      "en": "Even after your departure date was set, you walked"
+    },
+    {
+      "id": 87,
+      "sentenceId": 45,
+      "start": 822.2,
+      "end": 830.2,
+      "tr": "zamanki yollardan yürüdün, tanıdık yerlerde durdun.",
+      "en": "your usual routes and stopped at familiar spots."
+    },
+    {
+      "id": 88,
+      "sentenceId": 46,
+      "start": 831.7,
+      "end": 838.7,
+      "tr": "Denizanası sürüsü gittikten sonra da su",
+      "en": "After the jellyfish were gone, the companion"
+    },
+    {
+      "id": 89,
+      "sentenceId": 46,
+      "start": 839.3,
+      "end": 847.3,
+      "tr": "kenarındaki yoldaş varlık aynı yerde kaldı.",
+      "en": "entity by the water remained in the same place."
+    },
+    {
+      "id": 90,
+      "sentenceId": 47,
+      "start": 848.8,
+      "end": 855.8,
+      "tr": "Köpeğin ve denizanasılarının bulunduğu yerlerdeki",
+      "en": "You continued to observe the companion entities"
+    },
+    {
+      "id": 91,
+      "sentenceId": 47,
+      "start": 856.4,
+      "end": 864.4,
+      "tr": "yoldaş varlıkları gözlemlemeye devam ettin.",
+      "en": "where the dog and the jellyfish had been."
+    },
+    {
+      "id": 92,
+      "sentenceId": 48,
+      "start": 865.9,
+      "end": 873.9,
+      "tr": "Onlara isim vermiş olsan da, mekânın dokusuna",
+      "en": "Even though you had given them names, companion entities"
+    },
+    {
+      "id": 93,
+      "sentenceId": 48,
+      "start": 874.5,
+      "end": 883.5,
+      "tr": "bağlı yoldaş varlıklar başka bir yere gidemez.",
+      "en": "bound to the fabric of a place cannot go elsewhere."
+    },
+    {
+      "id": 94,
+      "sentenceId": 49,
+      "start": 885.0,
+      "end": 896.0,
+      "tr": "Yoldaş varlıklar orada kaldı, ama sana kalacak bir yer tanınmadı.",
+      "en": "The companion entities remained there, but you were denied a place to stay."
+    },
+    {
+      "id": 95,
+      "sentenceId": 50,
+      "start": 899.0,
+      "end": 907.0,
+      "tr": "Sen gittikten sonra bile duyguların burada kalıp",
+      "en": "Even after you leave, your feelings will remain"
+    },
+    {
+      "id": 96,
+      "sentenceId": 50,
+      "start": 907.6,
+      "end": 914.6,
+      "tr": "bir başkasının sahnesinde varlığını sürdürecek.",
+      "en": "here, lingering in someone else’s scene."
+    },
+    {
+      "id": 97,
+      "sentenceId": 51,
+      "start": 916.1,
+      "end": 924.1,
+      "tr": "İnsanlar hiçbir mekânın tamamen boş olmadığını fark etti.",
+      "en": "People realized that no space was ever entirely empty."
+    },
+    {
+      "id": 98,
+      "sentenceId": 52,
+      "start": 925.6,
+      "end": 933.6,
+      "tr": "Birbirini tanımak, varoluşun koşullarını değiştirdi.",
+      "en": "Recognizing one another changed the conditions of existence."
+    },
+    {
+      "id": 99,
+      "sentenceId": 53,
+      "start": 935.1,
+      "end": 943.1,
+      "tr": "Hiç kimse kendini dünyanın dışında tutamazdı.",
+      "en": "No one could place themselves outside the world."
+    },
+    {
+      "id": 100,
+      "sentenceId": 54,
+      "start": 944.6,
+      "end": 952.6,
+      "tr": "İnsanlar bu çağa yalnızlığın sonu adını verdi.",
+      "en": "People called this era the end of solitude."
+    }
+  ]
+}

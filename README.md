@@ -31,3 +31,7 @@ git add clips/ # 필요하면 편집 프로젝트 파일 경로도 추가
 git commit -m "Update video editing sources"
 git push origin video-editing
 ```
+
+## 최신 시스템 코드와 실행 방법
+
+[HANDOFF.md](HANDOFF.md)에 최신 아이패드·스크린 구성, 두 저장소 내려받기, 로컬 실행, 자막 타이밍, 미구현 항목을 정리했습니다. `public/video/`는 위쪽 스크린 코드, `floor-clips/`는 앞으로 추가할 바닥 영상 폴더입니다.
