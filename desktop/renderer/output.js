@@ -1,3 +1,4 @@
+import { createPoemEnding } from "./poem-ending.js";
 import { createWorld } from "./jellies.js";
 import { createOverlays } from "/video/overlays.js";
 import { createSoundtrack } from "/video/soundtrack.js";
@@ -61,6 +62,10 @@ async function syncClock() {
 for (let i = 0; i < 5; i++) await syncClock();
 setInterval(() => void syncClock(), 5000);
 const centralNow = () => performance.now() + offset;
+const showDuration = () => channel === 'A' ? Math.max(video.duration, subtitles.duration || 0) : video.duration;
+const playbackRate = () => channel === 'A' ? video.duration / showDuration() : 1;
+const showTime = () => channel === 'A' ? video.currentTime / playbackRate() : video.currentTime;
+const poem = channel === 'A' ? createPoemEnding(document.querySelector('#interaction-layers'), boot.origin) : null;
 function waitEvent(name, timeout = 15000) {
   return new Promise((resolve, reject) => {
     const finish = (error) => {
@@ -84,11 +89,11 @@ async function readyMedia() {
   if (!Number.isFinite(video.duration) || video.duration <= 0)
     throw new Error("영상 길이 오류");
   if (video.readyState < 2) await waitEvent("loadeddata");
-  return { duration: video.duration };
+  return { duration: showDuration() };
 }
 async function seek(time) {
   video.pause();
-  const t = mediaTime(channel, time, video.duration);
+  const t = mediaTime(channel, channel === 'A' ? time * playbackRate() : time, video.duration);
   if (Math.abs(video.currentTime - t) > 0.001) {
     const pending = waitEvent("seeked");
     video.currentTime = t;
@@ -106,7 +111,21 @@ api.onState((next) => {
   }
 });
 api.onRequest(async (name, data) => {
+  if (name === "poem-ending") {
+    if(!poem) return {token:null};
+    overlays?.clear();
+    document.body.classList.add('poem-ending');
+    poem.progress(state.duration,state.duration,'ending',String(state.round));
+    const result = await poem.finish();
+    if(!result.token) document.body.classList.remove('poem-ending');
+    return result;
+  }
+  if (name === "poem-blackout") {
+    document.body.classList.add('poem-blackout'); return;
+  }
+  if (name === "poem-reset") { poem?.reset(data.token); return; }
   if (name === "prepare") {
+    document.body.classList.remove('poem-ending');
     playGeneration++;
     playing = false;
     overlays?.clear();
@@ -114,7 +133,7 @@ api.onRequest(async (name, data) => {
     await readyMedia();
     await seek(data.time);
     prepared = true;
-    return { duration: video.duration };
+    return { duration: showDuration() };
   }
   if (name === "play") {
     const generation = playGeneration;
@@ -123,10 +142,12 @@ api.onRequest(async (name, data) => {
       setTimeout(resolve, Math.max(0, data.startAt - centralNow())),
     );
     if (generation !== playGeneration) throw new Error("재생 취소");
+    video.playbackRate = playbackRate();
     await Promise.all([video.play(), soundtrack?.start()]);
+    document.body.classList.remove('poem-blackout');
     playing = true;
     overlays?.setPaused(false);
-    return { time: video.currentTime };
+    return { time: showTime() };
   }
   if (name === "pause") {
     playGeneration++;
@@ -160,7 +181,7 @@ api.onRequest(async (name, data) => {
     video.src = "/media/" + channel;
     video.load();
     await readyMedia();
-    api.report({ type: "ready", duration: video.duration, model: world.mode });
+    api.report({ type: "ready", duration: showDuration(), model: world.mode });
     return;
   }
   throw new Error("알 수 없는 출력 요청");
@@ -213,7 +234,7 @@ try {
   world = values[0];
   subtitles = values[2];
   if (state.fallback) world.fallback();
-  api.report({ type: "ready", duration: video.duration, model: world.mode });
+  api.report({ type: "ready", duration: showDuration(), model: world.mode });
 } catch (error) {
   notice.textContent = error.message;
   api.report({ type: "fault", reason: error.message });
@@ -245,7 +266,7 @@ function frame(now) {
     births: state.births,
     settings: state.settings,
   });
-  subtitles(state.phase === "hold" ? -1 : video.currentTime);
+  subtitles(state.phase === "hold" ? -1 : showTime() * (subtitles.duration || showDuration()) / showDuration());
   overlays?.frame();
   document.body.dataset.phase = state.phase;
   document.body.dataset.round = String(state.round);
@@ -287,9 +308,10 @@ function frame(now) {
   }
   if (now - lastReport > 200) {
     lastReport = now;
+    if(!document.body.classList.contains('poem-ending')) poem?.progress(time, state.duration, running ? 'playing' : state.phase === 'hold' ? 'ending' : 'paused', String(state.round));
     api.report({
       type: "frame",
-      time: video.currentTime,
+      time: showTime(),
       fps,
       dropped: video.getVideoPlaybackQuality?.().droppedVideoFrames || 0,
     });

@@ -1,0 +1,88 @@
+import {_electron as electron} from 'playwright';
+import assert from 'node:assert/strict';
+import {mkdtemp,writeFile,mkdir,rm} from 'node:fs/promises';
+import path from 'node:path';
+import os from 'node:os';
+import {installationDefaults} from '../desktop/main/settings.mjs';
+const root=path.resolve(import.meta.dirname,'..'), dir=await mkdtemp(path.join(os.tmpdir(),'poiesis-integration-'));
+const config=structuredClone(installationDefaults);
+config.room=`integration-${process.pid}`;config.show.holdSeconds=1;config.show.fadeSeconds=3;
+if(process.env.SEA_VERIFY_MEDIA_A)config.media.A=process.env.SEA_VERIFY_MEDIA_A;
+if(process.env.SEA_VERIFY_MEDIA_B)config.media.B=process.env.SEA_VERIFY_MEDIA_B;
+await writeFile(path.join(dir,'installation.json'),JSON.stringify(config));
+const env={...process.env,SEA_TEST_DATA:dir};delete env.ELECTRON_RUN_AS_NODE;
+let app;
+async function until(fn,ms=45000){const deadline=Date.now()+ms;while(Date.now()<deadline){if(await fn())return;await new Promise(r=>setTimeout(r,100))}throw new Error('Condition timeout')}
+try{
+ app=await electron.launch({args:[root,'--preview'],env,timeout:60000});
+ let op,a,b;
+ await until(()=>{for(const p of app.windows()){if(p.url().includes('operator.html'))op=p;if(p.url().includes('channel=A'))a=p;if(p.url().includes('channel=B'))b=p}return op&&a&&b});
+ const state=async()=> (await op.evaluate(()=>window.installation.bootstrap())).state;
+ const errors=[];for(const p of [a,b,op])p.on('pageerror',e=>errors.push(e.message));
+ await until(async()=>{const s=await state();return s.health.A?.ready&&s.health.B?.ready});
+ console.log('READY',JSON.stringify((await state()).health));
+ const displayFrame=a.frameLocator('#interaction-layers');
+ await displayFrame.locator('#tablet').waitFor({state:'attached'});
+ assert.equal(await displayFrame.locator('#tablet').evaluate(el=>getComputedStyle(el).display),'none','projection iframe must not cover the running film with the tablet background');
+ const boot=await op.evaluate(()=>window.installation.bootstrap());
+ await app.evaluate(async({BrowserWindow},{url})=>{const tablet=new BrowserWindow({width:1080,height:810,show:false,webPreferences:{contextIsolation:true,nodeIntegration:false}});await tablet.loadURL(url)}, {url:`${boot.origin}/tablet/?room=${config.room}`});
+ let tablet;await until(()=>{tablet=app.windows().find(p=>p.url().startsWith(boot.origin+'/tablet/'));return tablet});
+ tablet.on('pageerror',e=>errors.push(e.message));
+ await tablet.waitForSelector('.blackout-lens');await tablet.evaluate(()=>document.fonts.ready);
+ await op.evaluate(()=>window.installation.command('start'));
+ await until(async()=> (await state()).time>1);
+ assert(Math.abs((await state()).duration-870)<.1);
+ assert.equal(await a.locator('#film').evaluate(v=>v.muted),true);
+ assert.equal(await b.locator('#film').evaluate(v=>v.muted),true);
+ const audio=await a.evaluate(()=>document.body.dataset.soundtrack);assert.equal(audio,'playing');
+ await op.evaluate(()=>window.installation.command('seek',8));
+ await until(async()=>!(await state()).busy);
+ assert.equal(await a.locator('#subtitle-tr').textContent(),'Uzaklara bakan insanlar, kendi içlerindeki en');
+ assert.equal(await a.locator('#subtitle-en').textContent(),'Looking into the distance, humans encountered something');
+ const contrast=await a.locator('#subtitle-en').evaluate(el=>({color:getComputedStyle(el).color,weight:getComputedStyle(el).fontWeight,background:getComputedStyle(el.parentElement).backgroundColor,stroke:getComputedStyle(el).webkitTextStrokeWidth,shadow:getComputedStyle(el).textShadow}));
+ assert.equal(contrast.color,'rgb(188, 233, 245)');
+ assert.equal(contrast.weight,'400');
+ assert.equal(contrast.background,'rgba(0, 0, 0, 0)');
+ assert.equal(contrast.stroke,'0.5px');
+ assert.notEqual(contrast.shadow,'none');
+ const rects=await a.locator('#subtitles').evaluate(root=>{const tr=root.querySelector('#subtitle-tr').getBoundingClientRect(),en=root.querySelector('#subtitle-en').getBoundingClientRect();return{tr:tr.top,en:en.top,bottom:(innerHeight-en.bottom)/innerHeight}});
+ assert(rects.tr<rects.en);assert(rects.bottom>=.115);
+ console.log('PASS revised Turkish above English, raised subtitle layout, shared reading clock');
+ // Complete one sentence through the real tablet UI, exercising the reliable bridge.
+ const position=await tablet.evaluate(async()=>{
+   const {getPromptCatalog}=await import('./blackout-prompts.js');
+   const s=getPromptCatalog(document.documentElement.lang).byId.get(document.querySelector('.blackout-sentence').dataset.sentenceId),f=document.querySelector('.blackout-field'),fr=f.getBoundingClientRect(),t=document.querySelector('.blackout-text'),tr=t.getBoundingClientRect(),l=document.querySelector('.blackout-lens').getBoundingClientRect();
+   for(const el of t.querySelectorAll('span')){if(!s.accepts.includes(el.dataset.id))continue;for(const r of el.getClientRects()){const cx=(r.left+r.right)/2-tr.left,cy=(r.top+r.bottom)/2-tr.top,y=(cy-l.height/2)/(f.clientHeight-l.height+Math.max(0,t.scrollHeight-f.clientHeight));if(y<0||y>1)continue;return{x:fr.left+Math.max(l.width/2,Math.min(f.clientWidth-l.width/2,cx)),y:fr.top+y*(f.clientHeight-l.height)+l.height/2}}}
+ });
+ await tablet.mouse.click(position.x,position.y);await tablet.locator('.blackout-lens').press('Enter');
+ await tablet.waitForFunction(()=>document.querySelectorAll('.blackout-poem-lines p').length===1);
+ await until(async()=> (await state()).count===1);
+ const line=await tablet.locator('.poem-line-text').textContent();
+ console.log('PASS real tablet completion → one installation trigger');
+ const round=(await state()).round;
+ await op.evaluate(()=>window.installation.command('end'));
+ await until(async()=> (await state()).round===round+1);
+ assert.equal(await tablet.locator('.poem-line-text').textContent(),line);
+ console.log('PASS unfinished poem survives the automatic loop');
+ // The finished poem must show for ten seconds, black out, restart, then reset the tablet.
+ await until(async()=>!(await state()).busy);
+ await tablet.locator('.poem-finish').click();
+ assert(await tablet.locator('#tablet').evaluate(e=>e.classList.contains('reading-mode')));
+ await mkdir(path.join(root,'output/playwright'),{recursive:true});
+ await tablet.screenshot({path:path.join(root,'output/playwright/author-tablet-book.png')});
+ await op.evaluate(()=>window.installation.command('end'));
+ const projected=a.frameLocator('#interaction-layers').locator('#projection-poem');
+ await projected.waitFor({state:'visible'});const start=Date.now();
+ assert.equal(await projected.locator('p').textContent(),line);
+ await a.screenshot({path:path.join(root,'output/playwright/author-poem-ending.png')});
+ await new Promise(r=>setTimeout(r,9000));assert(await projected.isVisible());
+ await a.waitForFunction(()=>document.body.classList.contains('poem-blackout'));
+ await b.waitForFunction(()=>document.body.classList.contains('poem-blackout'));
+ assert(Date.now()-start>=9500);
+ await until(async()=> (await state()).round===round+2);
+ await tablet.waitForFunction(()=>document.querySelectorAll('.blackout-poem-lines p').length===0);
+ await until(async()=>!(await state()).busy);
+ assert.equal(await tablet.locator('#tablet').evaluate(e=>e.classList.contains('reading-mode')),false);
+ assert.deepEqual(errors,[]);
+ console.log('PASS finalized poem → ten seconds → two-screen blackout → restart → tablet reset');
+}finally{if(app)await app.close();await rm(dir,{recursive:true,force:true})}

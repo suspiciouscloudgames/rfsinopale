@@ -52,20 +52,21 @@ if (!app.requestSingleInstanceLock()) {
           config.media.A ||
           path.join(
             root,
-            "assets/video/resonant-field-film/resonant_field_picture_01.mp4",
+            "assets/video/resonant-field-film/poiesis-upper-v1.mp4",
           ),
         "/media/B":
-          config.media.B || path.join(root, "assets/floorVideos/floor.mp4"),
+          config.media.B || path.join(root, "assets/floorVideos/poiesis-floor-v1.mp4"),
         "/media/model": path.join(root, "animation/jellyfish_slow_swim.glb"),
-        "/assets/audio/stuck-sea-loop.wav": path.join(
+        "/assets/audio/stuck-final.mp3": path.join(
           root,
-          "assets/audio/stuck-sea-loop.wav",
+          "assets/audio/stuck-final.mp3",
         ),
       };
       for (const file of [
         "resonant_field_subtitles.json",
         "resonant_field_subtitles_tr.json",
         "resonant_field_subtitles_en.json",
+        "resonant_field_bilingual_timeline.json",
       ])
         media["/subtitles/" + file] = path.join(
           root,
@@ -224,6 +225,18 @@ if (!app.requestSingleInstanceLock()) {
             settings: show.settings,
           });
         log("play", { round: show.round, time });
+      }
+      async function finishRound() {
+        const generation = playGeneration;
+        const { token } = await rpc("A", "poem-ending");
+        if (generation !== playGeneration) throw new Error("엔딩 전환 취소");
+        if (token) {
+          await both("poem-blackout");
+          await new Promise(resolve => setTimeout(resolve, 2000));
+          if (generation !== playGeneration) throw new Error("엔딩 전환 취소");
+        }
+        await playAt(0, true);
+        if (token) await rpc("A", "poem-reset", { token });
       }
       function startupFailure(reason) {
         if (!startupPending) return;
@@ -665,7 +678,7 @@ if (!app.requestSingleInstanceLock()) {
           void pause("시스템 중단/절전 감지");
         lastTick = t;
         if (!busy && show.phase === "hold" && show.snapshot().remaining <= 0)
-          void transact(() => playAt(0, true)).catch((error) =>
+          void transact(() => finishRound()).catch((error) =>
             log("restart-failed", { reason: error.message }),
           );
         if (!busy && show.running()) {

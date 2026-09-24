@@ -1,3 +1,11 @@
+# Current soundtrack
+
+`stuck-final.mp3` is the artist-supplied **Stuck (Final).mp3**.
+It loops at its original speed without an added wave bed or silent interval.
+SHA-256: d1c93d065de8fba67321c920a8afbf5eaa5af377679a3285a589e585995e0a77.
+
+The earlier soundtrack and its credits remain below for provenance; they are not used by the desktop installation.
+
 # Main screening soundtrack
 
 - Music: `Stuck.mp3`, supplied by the artist for this exhibition.

@@ -21,8 +21,8 @@ const files = [
   "video",
   "animation/jellyfish_slow_swim.glb",
   "assets/video/resonant-field-film",
-  "assets/floorVideos/floor.mp4",
-  "assets/audio/stuck-sea-loop.wav",
+  "assets/floorVideos/poiesis-floor-v1.mp4",
+  "assets/audio/stuck-final.mp3",
   "assets/audio/CREDITS.md",
   "assets/tiggerVideos/web",
 ];

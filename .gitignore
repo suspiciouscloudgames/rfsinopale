@@ -3,3 +3,7 @@ dist/
 output/
 .playwright-cli/
 .DS_Store
+
+# Local editing pool; originals remain in their existing repositories.
+/assets/video/source-clips/
+/assets/floorVideos/source-clips/

@@ -80,3 +80,24 @@ body[data-channel="B"] #interaction-layers,
 body[data-channel="B"] #subtitles {
   display: none;
 }
+
+/* The author's revised reading layout, Turkish above English. */
+.subtitles {
+  bottom: 12%; gap: clamp(5px, .7vh, 12px);
+  padding: .5vh 2vw; background: transparent;
+}
+#subtitles .subtitle-line {
+  color: #fff; font-family: Arial, Helvetica, sans-serif; font-weight: 400;
+  line-height: 1.35;
+  -webkit-text-stroke: .5px #000;
+  paint-order: stroke fill;
+  text-shadow: 0 1px 2px #000, 0 0 5px #000b;
+}
+.subtitle-line { white-space: normal; text-wrap: balance; }
+#subtitles .subtitle-tr { font-size: clamp(16px, min(3.2vh, 2.4vw), 54px); }
+#subtitles .subtitle-en { font-size: clamp(13px, min(2.5vh, 1.875vw), 42px); color: #bce9f5; }
+body.poem-ending #world, body.poem-ending #world-background { visibility: hidden; }
+body.poem-ending #media-layer { opacity: 1 !important; background: #000; }
+body.poem-ending #film, body.poem-ending #trigger-overlays, body.poem-ending #subtitles { visibility: hidden; }
+body.poem-blackout #stage { visibility: hidden; }
+body.poem-blackout { background: #000; }

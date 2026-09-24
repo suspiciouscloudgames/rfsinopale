@@ -1,0 +1,365 @@
+{
+  "files": [
+    {
+      "channel": "upper",
+      "origin": "youngju",
+      "source": "assets/editing-originals/youngju/clips/1.mp4",
+      "file": "assets/video/source-clips/youngju__1.mp4",
+      "bytes": 25064321,
+      "sha256": "8077e0bad805cc687af14dd9d92479be7d3f9096425ba084b80136935e4fd333"
+    },
+    {
+      "channel": "upper",
+      "origin": "youngju",
+      "source": "assets/editing-originals/youngju/clips/10.mp4",
+      "file": "assets/video/source-clips/youngju__10.mp4",
+      "bytes": 29232630,
+      "sha256": "71acf7636b0b5e8b926711c3100d20fbd64836fa89a3654396a3608a52378f6a"
+    },
+    {
+      "channel": "upper",
+      "origin": "youngju",
+      "source": "assets/editing-originals/youngju/clips/11.mp4",
+      "file": "assets/video/source-clips/youngju__11.mp4",
+      "bytes": 6911396,
+      "sha256": "e1f8f55181502064e3cc8c53a846b550f2c2e81933595bbe016c905d60eee66d"
+    },
+    {
+      "channel": "upper",
+      "origin": "youngju",
+      "source": "assets/editing-originals/youngju/clips/12.mp4",
+      "file": "assets/video/source-clips/youngju__12.mp4",
+      "bytes": 12473029,
+      "sha256": "c760a5c22d0979c7313adb168c4a06a6b2699ffcd220ab1cc458d6675371a727"
+    },
+    {
+      "channel": "upper",
+      "origin": "youngju",
+      "source": "assets/editing-originals/youngju/clips/13.mp4",
+      "file": "assets/video/source-clips/youngju__13.mp4",
+      "bytes": 21202063,
+      "sha256": "6a8a3632f48e3568f1b2d756303b1463594bbbcc88ec8017c860c4e20896b0e0"
+    },
+    {
+      "channel": "upper",
+      "origin": "youngju",
+      "source": "assets/editing-originals/youngju/clips/14.mp4",
+      "file": "assets/video/source-clips/youngju__14.mp4",
+      "bytes": 27660945,
+      "sha256": "1a27f9ad7d9c11eb1b6b21fba2498c31870d3850ff0b4ab490ff1c6c4e5c9f24"
+    },
+    {
+      "channel": "upper",
+      "origin": "youngju",
+      "source": "assets/editing-originals/youngju/clips/16.mp4",
+      "file": "assets/video/source-clips/youngju__16.mp4",
+      "bytes": 28463860,
+      "sha256": "3a743dff0f0040144fe48f3bf55e9e357f17f36926eedaae7e998e1d0b6a78e6"
+    },
+    {
+      "channel": "upper",
+      "origin": "youngju",
+      "source": "assets/editing-originals/youngju/clips/17.mp4",
+      "file": "assets/video/source-clips/youngju__17.mp4",
+      "bytes": 13402362,
+      "sha256": "64251b832eb44a66ab02277578f9eefa5f2138d6659484f9b665f5f71f068e9f"
+    },
+    {
+      "channel": "upper",
+      "origin": "youngju",
+      "source": "assets/editing-originals/youngju/clips/2.mp4",
+      "file": "assets/video/source-clips/youngju__2.mp4",
+      "bytes": 12835329,
+      "sha256": "69cc99bcd3e486c98b356897b4548b5e4aa663a1935be69fcbaacfa3a09593ad"
+    },
+    {
+      "channel": "upper",
+      "origin": "youngju",
+      "source": "assets/editing-originals/youngju/clips/3.mp4",
+      "file": "assets/video/source-clips/youngju__3.mp4",
+      "bytes": 1025199,
+      "sha256": "5a8409407facd5cba1df9aa2453fda4fdc495c5d190901b2741ef2ed6d83a7e9"
+    },
+    {
+      "channel": "upper",
+      "origin": "youngju",
+      "source": "assets/editing-originals/youngju/clips/4.mp4",
+      "file": "assets/video/source-clips/youngju__4.mp4",
+      "bytes": 8960384,
+      "sha256": "36b7a88aa2594bf7b11e00012a5f13fdfc087ab96acc3909652ed79b8a23410d"
+    },
+    {
+      "channel": "upper",
+      "origin": "youngju",
+      "source": "assets/editing-originals/youngju/clips/5.mp4",
+      "file": "assets/video/source-clips/youngju__5.mp4",
+      "bytes": 63103867,
+      "sha256": "58ac4c2787dded6890330d92da4e712ac1c203b7f16cd173636891cc49a9d557"
+    },
+    {
+      "channel": "upper",
+      "origin": "youngju",
+      "source": "assets/editing-originals/youngju/clips/6.mp4",
+      "file": "assets/video/source-clips/youngju__6.mp4",
+      "bytes": 15599400,
+      "sha256": "907ff503c112d7c488fa45d2c6fcd7f1df0146a36e049effb39a56b08c90cb9a"
+    },
+    {
+      "channel": "upper",
+      "origin": "youngju",
+      "source": "assets/editing-originals/youngju/clips/7.mp4",
+      "file": "assets/video/source-clips/youngju__7.mp4",
+      "bytes": 65939925,
+      "sha256": "c3811bfe880f02322a63b6abf4295a4d9e6df16c0a0299aa265efcbcf0dcf8c4"
+    },
+    {
+      "channel": "upper",
+      "origin": "youngju",
+      "source": "assets/editing-originals/youngju/clips/8.mp4",
+      "file": "assets/video/source-clips/youngju__8.mp4",
+      "bytes": 17717260,
+      "sha256": "585355157ab08cb9b6b7912c5cb2ce5aaae8eb92c8572dc90dd1c69a36185d6f"
+    },
+    {
+      "channel": "upper",
+      "origin": "youngju",
+      "source": "assets/editing-originals/youngju/clips/9.mp4",
+      "file": "assets/video/source-clips/youngju__9.mp4",
+      "bytes": 3192670,
+      "sha256": "5f8b85c2fd9ef8268c397e8422e35ddc61084fd23be5d4e7c23888767b058130"
+    },
+    {
+      "channel": "upper",
+      "origin": "youngju",
+      "source": "assets/editing-originals/youngju/clips/IMG_5388.MOV",
+      "file": "assets/video/source-clips/youngju__IMG_5388.MOV",
+      "bytes": 22773549,
+      "sha256": "217541b15f0be29aa1c532db71c92fe6098ad656efe0cd26c02a2c4bfc5ca1aa"
+    },
+    {
+      "channel": "upper",
+      "origin": "youngju",
+      "source": "assets/editing-originals/youngju/clips/IMG_5611.mov",
+      "file": "assets/video/source-clips/youngju__IMG_5611.mov",
+      "bytes": 33158935,
+      "sha256": "ae4ebab660db12ecb14f8fa1cf7a610f8e2ab7c7c8719bdfeebc06ff793af4df"
+    },
+    {
+      "channel": "upper",
+      "origin": "youngju",
+      "source": "assets/editing-originals/youngju/clips/c.mp4",
+      "file": "assets/video/source-clips/youngju__c.mp4",
+      "bytes": 96942848,
+      "sha256": "409b1a42620c6c0b46268b7d9c9774efafde190e8d2ca98ae8a03e2dfd6a828c"
+    },
+    {
+      "channel": "upper",
+      "origin": "youngju",
+      "source": "assets/editing-originals/youngju/clips/g.mp4",
+      "file": "assets/video/source-clips/youngju__g.mp4",
+      "bytes": 47439807,
+      "sha256": "677bbbda0c854ed8af8c0ff800fa96a1d2d7d6b874e090901d5b3ddda7f6a840"
+    },
+    {
+      "channel": "floor",
+      "origin": "youngju",
+      "source": "assets/editing-originals/youngju/floor-clips/IMG_4748.MP4",
+      "file": "assets/floorVideos/source-clips/youngju__IMG_4748.MP4",
+      "bytes": 12352014,
+      "sha256": "2c342bf51525b7dd9483fbe997bbcd4680dc8ab0762f5182fb427a851331c6dd"
+    },
+    {
+      "channel": "floor",
+      "origin": "youngju",
+      "source": "assets/editing-originals/youngju/floor-clips/IMG_4752.MP4",
+      "file": "assets/floorVideos/source-clips/youngju__IMG_4752.MP4",
+      "bytes": 2728862,
+      "sha256": "fd1aba77b102402cc9b2ae4393f71f6bbe497418aec18b7c1d84102f4f3827dd"
+    },
+    {
+      "channel": "floor",
+      "origin": "youngju",
+      "source": "assets/editing-originals/youngju/floor-clips/IMG_4755.mp4",
+      "file": "assets/floorVideos/source-clips/youngju__IMG_4755.mp4",
+      "bytes": 10900539,
+      "sha256": "9c63071eec15f015664cf3dfe8e1a0bbba48500e845009e4422e4656d8bdf401"
+    },
+    {
+      "channel": "floor",
+      "origin": "youngju",
+      "source": "assets/editing-originals/youngju/floor-clips/IMG_5191.MP4",
+      "file": "assets/floorVideos/source-clips/youngju__IMG_5191.MP4",
+      "bytes": 12821027,
+      "sha256": "54e1c2d355645dd9208ba7d017b5abe05bdf809c2657f6555be744240e3fc83b"
+    },
+    {
+      "channel": "floor",
+      "origin": "youngju",
+      "source": "assets/editing-originals/youngju/floor-clips/IMG_5369.MP4",
+      "file": "assets/floorVideos/source-clips/youngju__IMG_5369.MP4",
+      "bytes": 24074252,
+      "sha256": "eb20f748aa42ed25b00eacdee37484c2700d15edab4f2229c420e372b3b47d37"
+    },
+    {
+      "channel": "floor",
+      "origin": "youngju",
+      "source": "assets/editing-originals/youngju/floor-clips/IMG_5379.MP4",
+      "file": "assets/floorVideos/source-clips/youngju__IMG_5379.MP4",
+      "bytes": 23097411,
+      "sha256": "00cbaf50d7b1abfe77671690196f97fe109c7ba8825a7953ca6039105ca76d92"
+    },
+    {
+      "channel": "floor",
+      "origin": "youngju",
+      "source": "assets/editing-originals/youngju/floor-clips/IMG_5394.MP4",
+      "file": "assets/floorVideos/source-clips/youngju__IMG_5394.MP4",
+      "bytes": 15582843,
+      "sha256": "36d8382e50f92857b830c500f9bd843369dd3a5d83ad618f000112966c35d215"
+    },
+    {
+      "channel": "upper",
+      "origin": "hoyeon-main",
+      "source": "assets/video/resonant-field-film/resonant_field_picture.mp4",
+      "file": "assets/video/source-clips/hoyeon-main__resonant_field_picture.mp4",
+      "bytes": 82591568,
+      "sha256": "980924d63b7b29d7f1ef8ddc5de9d474545684f0cc16e4a20567ce84de924782"
+    },
+    {
+      "channel": "upper",
+      "origin": "hoyeon-main",
+      "source": "assets/video/resonant-field-film/resonant_field_picture_01.mp4",
+      "file": "assets/video/source-clips/hoyeon-main__resonant_field_picture_01.mp4",
+      "bytes": 857821396,
+      "sha256": "eceb557362897971a8a9e3384a57bdd24ce92ce30d6199a55cd51c1d18007990"
+    },
+    {
+      "channel": "upper",
+      "origin": "hoyeon-trigger-source",
+      "source": "assets/tiggerVideos/IMG_4436.MOV",
+      "file": "assets/video/source-clips/hoyeon-trigger-source__IMG_4436.MOV",
+      "bytes": 352220326,
+      "sha256": "d7acdd89afdb2387bde5d3f2f4e07c26a31a439ef4f7ddb347536ce04c35a17c"
+    },
+    {
+      "channel": "upper",
+      "origin": "hoyeon-trigger-source",
+      "source": "assets/tiggerVideos/IMG_4861.MOV",
+      "file": "assets/video/source-clips/hoyeon-trigger-source__IMG_4861.MOV",
+      "bytes": 377190236,
+      "sha256": "bd0f4314c6580ad6d52cdd017f522183be3ed630c817b4d0a7b0d7cd555ee8ab"
+    },
+    {
+      "channel": "upper",
+      "origin": "hoyeon-trigger-source",
+      "source": "assets/tiggerVideos/IMG_4869.MOV",
+      "file": "assets/video/source-clips/hoyeon-trigger-source__IMG_4869.MOV",
+      "bytes": 126246057,
+      "sha256": "5841c9617affaaf93c2172c0494284ec0387fe06b00e5688a1a1ec51f75b17b3"
+    },
+    {
+      "channel": "upper",
+      "origin": "hoyeon-trigger-source",
+      "source": "assets/tiggerVideos/IMG_4869_1.MOV",
+      "file": "assets/video/source-clips/hoyeon-trigger-source__IMG_4869_1.MOV",
+      "bytes": 19149872,
+      "sha256": "01749cf65a6bc23e1477cec1c775fda0d7db8352b3de6f9264cbee30200b9d74"
+    },
+    {
+      "channel": "upper",
+      "origin": "hoyeon-trigger-source",
+      "source": "assets/tiggerVideos/IMG_4869_2.MOV",
+      "file": "assets/video/source-clips/hoyeon-trigger-source__IMG_4869_2.MOV",
+      "bytes": 24652291,
+      "sha256": "96a423b1f41d863ac2fa05d612d066e795d2409ebe402d232e38b975f7e3d04b"
+    },
+    {
+      "channel": "upper",
+      "origin": "hoyeon-trigger-source",
+      "source": "assets/tiggerVideos/IMG_4872.MOV",
+      "file": "assets/video/source-clips/hoyeon-trigger-source__IMG_4872.MOV",
+      "bytes": 105411353,
+      "sha256": "1b960dc70a970ff265060e22101d51017f06e55d7a6449ff0e56c3b984c77481"
+    },
+    {
+      "channel": "upper",
+      "origin": "hoyeon-trigger-source",
+      "source": "assets/tiggerVideos/IMG_4890.MOV",
+      "file": "assets/video/source-clips/hoyeon-trigger-source__IMG_4890.MOV",
+      "bytes": 364092827,
+      "sha256": "1a90dcb7fbba6bc8f3c0a531e7f23eb0df9194611abe7e44adfcaea358e33a2c"
+    },
+    {
+      "channel": "upper",
+      "origin": "hoyeon-trigger-source",
+      "source": "assets/tiggerVideos/IMG_4891.MOV",
+      "file": "assets/video/source-clips/hoyeon-trigger-source__IMG_4891.MOV",
+      "bytes": 368193279,
+      "sha256": "bb6ca40171026bd9084e915d32fafc3ae3c66a65ea6903b4daba0bb5933f94eb"
+    },
+    {
+      "channel": "upper",
+      "origin": "hoyeon-trigger-source",
+      "source": "assets/tiggerVideos/Untitled_1.mov",
+      "file": "assets/video/source-clips/hoyeon-trigger-source__Untitled_1.mov",
+      "bytes": 4173261,
+      "sha256": "3bbf0433db758c520021d09a7c8e3a575c8b81ad581707cfe5ba48e8e96445b0"
+    },
+    {
+      "channel": "upper",
+      "origin": "hoyeon-trigger-source",
+      "source": "assets/tiggerVideos/Untitled_2.mov",
+      "file": "assets/video/source-clips/hoyeon-trigger-source__Untitled_2.mov",
+      "bytes": 55084385,
+      "sha256": "8b136a00b2013a632080fdb379e0d70a7afd9a316235d60ca4994c24377503aa"
+    },
+    {
+      "channel": "upper",
+      "origin": "hoyeon-trigger-web",
+      "source": "assets/tiggerVideos/web/IMG_4869.mp4",
+      "file": "assets/video/source-clips/hoyeon-trigger-web__IMG_4869.mp4",
+      "bytes": 48753047,
+      "sha256": "9ca7f503ef9ce94a1db88643e7af94b331f6f72fa13d92104292799bc255dae3"
+    },
+    {
+      "channel": "upper",
+      "origin": "hoyeon-trigger-web",
+      "source": "assets/tiggerVideos/web/IMG_4886.mp4",
+      "file": "assets/video/source-clips/hoyeon-trigger-web__IMG_4886.mp4",
+      "bytes": 9518417,
+      "sha256": "98cba025ac79838deed14c0b6b95575f1032d0635b195b22e4978d2590ff1bb1"
+    },
+    {
+      "channel": "upper",
+      "origin": "hoyeon-trigger-web",
+      "source": "assets/tiggerVideos/web/Untitled_1.mp4",
+      "file": "assets/video/source-clips/hoyeon-trigger-web__Untitled_1.mp4",
+      "bytes": 1208603,
+      "sha256": "1de161360f755a15ecde78bfb37fd021b0507f7024f992823dc63e8d9f3b1cff"
+    },
+    {
+      "channel": "upper",
+      "origin": "hoyeon-trigger-web",
+      "source": "assets/tiggerVideos/web/Untitled_2.mp4",
+      "file": "assets/video/source-clips/hoyeon-trigger-web__Untitled_2.mp4",
+      "bytes": 15498485,
+      "sha256": "a1e05deee9c23e7ae4fc7d5c02aa9c3d3969c2e7dd193b4cdc8a3e36d3399f8a"
+    },
+    {
+      "channel": "floor",
+      "origin": "hoyeon-main",
+      "source": "assets/floorVideos/floor.mp4",
+      "file": "assets/floorVideos/source-clips/hoyeon-main__floor.mp4",
+      "bytes": 662372598,
+      "sha256": "1b1f6f35bbd75bb3911b084bddcf40f0df57abc1cefd9dc2a4a01ca7a9177b21"
+    }
+  ],
+  "pendingLfsFiles": [],
+  "excludedExistingCopies": [
+    "assets/video/source-clips/youngju__15.mp4",
+    "assets/video/source-clips/youngju__a.mp4",
+    "assets/video/source-clips/youngju__b.mp4",
+    "assets/video/source-clips/youngju__d.mp4",
+    "assets/video/source-clips/youngju__e.mp4",
+    "assets/video/source-clips/youngju__f.mp4"
+  ]
+}

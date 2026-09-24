@@ -10,7 +10,8 @@
     "desktop:verify": "node scripts/verify-desktop.mjs",
     "desktop:package:win": "node scripts/package-desktop.mjs",
     "tablet:sync": "node scripts/sync-tablet.mjs",
-    "desktop:verify:startup": "node scripts/verify-startup.mjs"
+    "desktop:verify:startup": "node scripts/verify-startup.mjs",
+    "desktop:verify:author": "node scripts/verify-author-integration.mjs"
   },
   "version": "1.0.0",
   "description": "Drifting Sea dual-channel installation",

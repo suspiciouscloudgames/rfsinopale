@@ -7,3 +7,8 @@
 /assets/tiggerVideos/web/IMG_4869.mp4 filter=lfs diff=lfs merge=lfs -text
 /assets/floorVideos/floor.mp4 filter=lfs diff=lfs merge=lfs -text
 /assets/video/resonant-field-film/resonant_field_picture_01.mp4 filter=lfs diff=lfs merge=lfs -text
+
+/assets/video/resonant-field-film/poiesis-upper-v1.mp4 filter=lfs diff=lfs merge=lfs -text
+/assets/floorVideos/poiesis-floor-v1.mp4 filter=lfs diff=lfs merge=lfs -text
+
+/assets/editing-originals/** filter=lfs diff=lfs merge=lfs -text

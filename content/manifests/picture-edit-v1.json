@@ -1,0 +1,621 @@
+{
+  "version": 2,
+  "fps": 25,
+  "width": 1920,
+  "height": 1080,
+  "duration": 870,
+  "totalFrames": 21750,
+  "upper": [
+    {
+      "startFrame": 0,
+      "endFrame": 342,
+      "source": "assets/video/source-clips/youngju__1.mp4",
+      "sourceIn": 0.12,
+      "sourceOut": 11.24,
+      "note": "Author sequence 1; used once, original color retained",
+      "fadeInFrames": 0,
+      "fadeOutFrames": 30,
+      "renderFrames": 357,
+      "speed": 0.7787114845938377,
+      "sentenceIds": [
+        1
+      ]
+    },
+    {
+      "startFrame": 342,
+      "endFrame": 548,
+      "source": "assets/video/source-clips/youngju__2.mp4",
+      "sourceIn": 0.12,
+      "sourceOut": 5.67,
+      "note": "Author sequence 2; used once, original color retained",
+      "fadeInFrames": 30,
+      "fadeOutFrames": 30,
+      "renderFrames": 236,
+      "speed": 0.5879237288135594,
+      "sentenceIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "startFrame": 548,
+      "endFrame": 1371,
+      "source": "assets/video/source-clips/youngju__6.mp4",
+      "sourceIn": 0.12,
+      "sourceOut": 22.04,
+      "note": "Author sequence 6; used once, original color retained",
+      "fadeInFrames": 30,
+      "fadeOutFrames": 30,
+      "renderFrames": 853,
+      "speed": 0.6424384525205158,
+      "sentenceIds": [
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "startFrame": 1371,
+      "endFrame": 2551,
+      "source": "assets/video/source-clips/youngju__7.mp4",
+      "sourceIn": 0.12,
+      "sourceOut": 29.97,
+      "note": "Author sequence 7; used once, original color retained",
+      "fadeInFrames": 30,
+      "fadeOutFrames": 30,
+      "renderFrames": 1210,
+      "speed": 0.6167355371900827,
+      "sentenceIds": [
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "startFrame": 2551,
+      "endFrame": 2810,
+      "source": "assets/video/source-clips/youngju__9.mp4",
+      "sourceIn": 0.12,
+      "sourceOut": 7.81,
+      "note": "Author sequence 9; used once, original color retained",
+      "fadeInFrames": 30,
+      "fadeOutFrames": 30,
+      "renderFrames": 289,
+      "speed": 0.6652249134948096,
+      "sentenceIds": [
+        6,
+        7
+      ]
+    },
+    {
+      "startFrame": 2810,
+      "endFrame": 3710,
+      "source": "assets/video/source-clips/youngju__10.mp4",
+      "sourceIn": 0.12,
+      "sourceOut": 22.77,
+      "note": "Author sequence 10; used once, original color retained",
+      "fadeInFrames": 30,
+      "fadeOutFrames": 30,
+      "renderFrames": 930,
+      "speed": 0.6088709677419354,
+      "sentenceIds": [
+        7,
+        8
+      ]
+    },
+    {
+      "startFrame": 3710,
+      "endFrame": 3988,
+      "source": "assets/video/source-clips/youngju__11.mp4",
+      "sourceIn": 0.12,
+      "sourceOut": 7.64,
+      "note": "Author sequence 11; used once, original color retained",
+      "fadeInFrames": 30,
+      "fadeOutFrames": 30,
+      "renderFrames": 308,
+      "speed": 0.6103896103896104,
+      "sentenceIds": [
+        9
+      ]
+    },
+    {
+      "startFrame": 3988,
+      "endFrame": 4194,
+      "source": "assets/video/source-clips/youngju__12.mp4",
+      "sourceIn": 0.12,
+      "sourceOut": 5.67,
+      "note": "Author sequence 12; used once, original color retained",
+      "fadeInFrames": 30,
+      "fadeOutFrames": 30,
+      "renderFrames": 236,
+      "speed": 0.5879237288135594,
+      "sentenceIds": [
+        9,
+        10
+      ]
+    },
+    {
+      "startFrame": 4194,
+      "endFrame": 4678,
+      "source": "assets/video/source-clips/youngju__14.mp4",
+      "sourceIn": 0.12,
+      "sourceOut": 12.54,
+      "note": "Author sequence 14; used once, original color retained",
+      "fadeInFrames": 30,
+      "fadeOutFrames": 30,
+      "renderFrames": 514,
+      "speed": 0.6040856031128405,
+      "sentenceIds": [
+        10,
+        11
+      ]
+    },
+    {
+      "startFrame": 4678,
+      "endFrame": 5179,
+      "source": "assets/video/source-clips/youngju__16.mp4",
+      "sourceIn": 0.12,
+      "sourceOut": 12.709999999999999,
+      "note": "Author sequence 16; used once, original color retained",
+      "fadeInFrames": 30,
+      "fadeOutFrames": 30,
+      "renderFrames": 531,
+      "speed": 0.5927495291902072,
+      "sentenceIds": [
+        11
+      ]
+    },
+    {
+      "startFrame": 5179,
+      "endFrame": 5401,
+      "source": "assets/video/source-clips/youngju__17.mp4",
+      "sourceIn": 0.12,
+      "sourceOut": 5.87,
+      "note": "Author sequence 17; used once, original color retained",
+      "fadeInFrames": 30,
+      "fadeOutFrames": 30,
+      "renderFrames": 252,
+      "speed": 0.5704365079365079,
+      "sentenceIds": [
+        12
+      ]
+    },
+    {
+      "startFrame": 5401,
+      "endFrame": 7042,
+      "source": "assets/video/source-clips/youngju__c.mp4",
+      "sourceIn": 0.12,
+      "sourceOut": 43.74,
+      "note": "Author sequence c; used once, original color retained",
+      "fadeInFrames": 30,
+      "fadeOutFrames": 30,
+      "renderFrames": 1671,
+      "speed": 0.6526032315978456,
+      "sentenceIds": [
+        12,
+        13,
+        14,
+        15
+      ]
+    },
+    {
+      "startFrame": 7042,
+      "endFrame": 7866,
+      "source": "assets/video/source-clips/hoyeon-trigger-web__IMG_4886.mp4",
+      "sourceIn": 1,
+      "sourceOut": 34,
+      "note": "Arrival: one stable waterfront gathering",
+      "fadeInFrames": 30,
+      "fadeOutFrames": 30,
+      "renderFrames": 854,
+      "speed": 0.9660421545667448,
+      "sentenceIds": [
+        16,
+        17
+      ]
+    },
+    {
+      "startFrame": 7866,
+      "endFrame": 10196,
+      "source": "assets/video/source-clips/hoyeon-main__resonant_field_picture_01.mp4",
+      "sourceIn": 146,
+      "sourceOut": 235,
+      "note": "First unique street section: encounters and attachment",
+      "fadeInFrames": 30,
+      "fadeOutFrames": 30,
+      "renderFrames": 2360,
+      "speed": 0.9427966101694915,
+      "sentenceIds": [
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ]
+    },
+    {
+      "startFrame": 10196,
+      "endFrame": 11654,
+      "source": "assets/video/source-clips/hoyeon-main__resonant_field_picture_01.mp4",
+      "sourceIn": 275,
+      "sourceOut": 325,
+      "note": "Unique street section before holding-form sentence",
+      "fadeInFrames": 30,
+      "fadeOutFrames": 30,
+      "renderFrames": 1488,
+      "speed": 0.8400537634408601,
+      "sentenceIds": [
+        24,
+        25,
+        26,
+        27
+      ]
+    },
+    {
+      "startFrame": 11654,
+      "endFrame": 12044,
+      "source": "assets/video/source-clips/youngju__IMG_5388.MOV",
+      "sourceIn": 2,
+      "sourceOut": 18.7,
+      "note": "Fish bucket with the sentence about holding in a recognizable form; used once",
+      "fadeInFrames": 30,
+      "fadeOutFrames": 30,
+      "renderFrames": 420,
+      "speed": 0.994047619047619,
+      "sentenceIds": [
+        28
+      ]
+    },
+    {
+      "startFrame": 12044,
+      "endFrame": 15079,
+      "source": "assets/video/source-clips/hoyeon-main__resonant_field_picture_01.mp4",
+      "sourceIn": 341,
+      "sourceOut": 449,
+      "note": "Return to later unique street section after the short fish insert",
+      "fadeInFrames": 30,
+      "fadeOutFrames": 30,
+      "renderFrames": 3065,
+      "speed": 0.8809135399673736,
+      "sentenceIds": [
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37
+      ]
+    },
+    {
+      "startFrame": 15079,
+      "endFrame": 16276,
+      "source": "assets/video/source-clips/hoyeon-trigger-source__IMG_4869.MOV",
+      "sourceIn": 1,
+      "sourceOut": 40,
+      "note": "Harbor: original water footage, first and only use",
+      "fadeInFrames": 30,
+      "fadeOutFrames": 30,
+      "renderFrames": 1227,
+      "speed": 0.7946210268948656,
+      "sentenceIds": [
+        38,
+        39,
+        40
+      ]
+    },
+    {
+      "startFrame": 16276,
+      "endFrame": 17478,
+      "source": "assets/video/source-clips/hoyeon-trigger-source__IMG_4872.MOV",
+      "sourceIn": 1,
+      "sourceOut": 39,
+      "note": "Second distinct harbor view, used once",
+      "fadeInFrames": 30,
+      "fadeOutFrames": 30,
+      "renderFrames": 1232,
+      "speed": 0.7711038961038961,
+      "sentenceIds": [
+        40,
+        41,
+        42
+      ]
+    },
+    {
+      "startFrame": 17478,
+      "endFrame": 18292,
+      "source": "assets/video/source-clips/youngju__IMG_5611.mov",
+      "sourceIn": 3,
+      "sourceOut": 29.7,
+      "note": "Everyday Sinop street beneath borders and the right to stay; no literal dog-caption pairing",
+      "fadeInFrames": 30,
+      "fadeOutFrames": 30,
+      "renderFrames": 844,
+      "speed": 0.7908767772511849,
+      "sentenceIds": [
+        42,
+        43,
+        44
+      ]
+    },
+    {
+      "startFrame": 18292,
+      "endFrame": 19481,
+      "source": "assets/video/source-clips/hoyeon-trigger-source__IMG_4890.MOV",
+      "sourceIn": 77,
+      "sourceOut": 118,
+      "note": "Continue toward the lit waterfront after the street; unique later source section",
+      "fadeInFrames": 30,
+      "fadeOutFrames": 30,
+      "renderFrames": 1219,
+      "speed": 0.8408531583264972,
+      "sentenceIds": [
+        45,
+        46,
+        47
+      ]
+    },
+    {
+      "startFrame": 19481,
+      "endFrame": 20210,
+      "source": "assets/video/source-clips/hoyeon-trigger-source__IMG_4891.MOV",
+      "sourceIn": 99,
+      "sourceOut": 119,
+      "note": "Only the visible colored-light ending of this source",
+      "fadeInFrames": 30,
+      "fadeOutFrames": 30,
+      "renderFrames": 759,
+      "speed": 0.6587615283267457,
+      "sentenceIds": [
+        48,
+        49
+      ]
+    },
+    {
+      "startFrame": 20210,
+      "endFrame": 21750,
+      "source": "assets/video/source-clips/youngju__g.mp4",
+      "sourceIn": 0.2,
+      "sourceOut": 37.5,
+      "note": "Author sunset, first and only use; preserved jellyfish ending",
+      "fadeInFrames": 30,
+      "fadeOutFrames": 0,
+      "renderFrames": 1555,
+      "speed": 0.5996784565916398,
+      "sentenceIds": [
+        50,
+        51,
+        52,
+        53,
+        54
+      ]
+    }
+  ],
+  "floor": [
+    {
+      "startFrame": 0,
+      "endFrame": 1167,
+      "source": "assets/floorVideos/source-clips/youngju__IMG_4748.MP4",
+      "sourceIn": 0.2,
+      "sourceOut": 31,
+      "note": "Blue sky opening; unique source interval",
+      "fadeInFrames": 0,
+      "fadeOutFrames": 60,
+      "renderFrames": 1197,
+      "speed": 0.6432748538011696,
+      "sentenceIds": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "startFrame": 1167,
+      "endFrame": 2375,
+      "source": "assets/floorVideos/source-clips/youngju__IMG_5191.MP4",
+      "sourceIn": 0.3,
+      "sourceOut": 32.2,
+      "note": "Colored reflection; unique source interval",
+      "fadeInFrames": 60,
+      "fadeOutFrames": 60,
+      "renderFrames": 1268,
+      "speed": 0.6289432176656152,
+      "sentenceIds": [
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "startFrame": 2375,
+      "endFrame": 6542,
+      "source": "assets/floorVideos/source-clips/hoyeon-main__floor.mp4",
+      "sourceIn": 0,
+      "sourceOut": 110,
+      "note": "Water master, first section; unique source interval",
+      "fadeInFrames": 60,
+      "fadeOutFrames": 60,
+      "renderFrames": 4227,
+      "speed": 0.6505796072864916,
+      "sentenceIds": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
+    },
+    {
+      "startFrame": 6542,
+      "endFrame": 8871,
+      "source": "assets/floorVideos/source-clips/youngju__IMG_5369.MP4",
+      "sourceIn": 0.3,
+      "sourceOut": 61.8,
+      "note": "Colored harbor lights; unique source interval",
+      "fadeInFrames": 60,
+      "fadeOutFrames": 60,
+      "renderFrames": 2389,
+      "speed": 0.643574717455002,
+      "sentenceIds": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ]
+    },
+    {
+      "startFrame": 8871,
+      "endFrame": 13227,
+      "source": "assets/floorVideos/source-clips/hoyeon-main__floor.mp4",
+      "sourceIn": 110,
+      "sourceOut": 225,
+      "note": "Water master, second section; unique source interval",
+      "fadeInFrames": 60,
+      "fadeOutFrames": 60,
+      "renderFrames": 4416,
+      "speed": 0.6510416666666667,
+      "sentenceIds": [
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32
+      ]
+    },
+    {
+      "startFrame": 13227,
+      "endFrame": 15587,
+      "source": "assets/floorVideos/source-clips/youngju__IMG_5379.MP4",
+      "sourceIn": 0.3,
+      "sourceOut": 62.6,
+      "note": "Green water; unique source interval",
+      "fadeInFrames": 60,
+      "fadeOutFrames": 60,
+      "renderFrames": 2420,
+      "speed": 0.6435950413223142,
+      "sentenceIds": [
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38
+      ]
+    },
+    {
+      "startFrame": 15587,
+      "endFrame": 17076,
+      "source": "assets/floorVideos/source-clips/youngju__IMG_5394.MP4",
+      "sourceIn": 0.3,
+      "sourceOut": 39.6,
+      "note": "Shallows; unique source interval",
+      "fadeInFrames": 60,
+      "fadeOutFrames": 60,
+      "renderFrames": 1549,
+      "speed": 0.6342801807617818,
+      "sentenceIds": [
+        38,
+        39,
+        40,
+        41,
+        42
+      ]
+    },
+    {
+      "startFrame": 17076,
+      "endFrame": 21750,
+      "source": "assets/floorVideos/source-clips/hoyeon-main__floor.mp4",
+      "sourceIn": 225,
+      "sourceOut": 348.4,
+      "note": "Water master, final section; unique source interval",
+      "fadeInFrames": 60,
+      "fadeOutFrames": 0,
+      "renderFrames": 4704,
+      "speed": 0.6558248299319727,
+      "sentenceIds": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54
+      ]
+    }
+  ],
+  "subtitleFile": "assets/video/resonant-field-film/resonant_field_bilingual_timeline.json",
+  "audio": "assets/audio/stuck-final.mp3",
+  "audioMode": "Separate original-speed looping soundtrack; picture masters have no audio or burned subtitles",
+  "rendering": {
+    "frameInterpolation": "none; duplicate/drop frames at 25fps",
+    "saturation": 1,
+    "gamma": 1,
+    "contrast": 1.04,
+    "scale": "lanczos"
+  },
+  "excludedAuthorFiles": [
+    "15.mp4",
+    "a.mp4",
+    "b.mp4",
+    "d.mp4",
+    "e.mp4",
+    "f.mp4"
+  ],
+  "projectionSelection": {
+    "restoredLowSaturationAuthorClips": [
+      "1",
+      "2",
+      "6",
+      "7",
+      "9",
+      "10",
+      "11",
+      "12",
+      "14",
+      "16",
+      "17",
+      "c"
+    ],
+    "excludedBlurredAuthorClips": [
+      "3.mp4",
+      "4.mp4",
+      "5.mp4",
+      "8.mp4",
+      "13.mp4"
+    ],
+    "omittedStreetRange": [
+      235,
+      275
+    ],
+    "noRepeatedSourceIntervals": true,
+    "noCrossChannelSourceReuse": true,
+    "review": "Restore lower-saturation originals instead of repeating colorful footage. No temporal frame blending."
+  }
+}
