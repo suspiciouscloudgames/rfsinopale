@@ -28,4 +28,4 @@ const occurrences=new Map()
 function countRanges(parts){for(const p of parts){if(p.id)occurrences.set(p.id,(occurrences.get(p.id)||0)+1);if(p.children)countRanges(p.children)}}
 countRanges(ko.passages)
 assert.equal(occurrences.get(id('비')),1,'Rain must not be found inside service, similar, equipment or empty')
-assert.equal(occurrences.get(id('개')),16,'Dog must not be found inside individual or personal detector')
+assert.equal(occurrences.get(id('개')),2,'Dog has only two selectable occurrences')
