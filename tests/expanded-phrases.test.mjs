@@ -23,3 +23,9 @@ for(const lang of ['ko','en','tr']){
  assert(getPromptCatalog(lang).byId.get('blackout-s-23').accepts.includes(id('비')),'Allow sensory metaphor in feeling slots')
 }
 console.log('PASS 22 new reachable phrases in all 3 languages, published IDs, poetic metaphor, case and number agreement, incompatible slot exclusions')
+
+const occurrences=new Map()
+function countRanges(parts){for(const p of parts){if(p.id)occurrences.set(p.id,(occurrences.get(p.id)||0)+1);if(p.children)countRanges(p.children)}}
+countRanges(ko.passages)
+assert.equal(occurrences.get(id('비')),1,'Rain must not be found inside service, similar, equipment or empty')
+assert.equal(occurrences.get(id('개')),16,'Dog must not be found inside individual or personal detector')
