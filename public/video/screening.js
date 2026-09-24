@@ -8,7 +8,7 @@ const layerRoom = /^[a-zA-Z0-9_-]{1,40}$/.test(layerParams.get('room') || '') ? 
 const localPreview = ['localhost', '127.0.0.1'].includes(location.hostname)
 const layerUrl = new URL(localPreview ? 'http://127.0.0.1:5190/' : '/gamepoem/', location.origin)
 layerUrl.searchParams.set('display', '1')
-layerUrl.searchParams.set('v', 'particles1')
+layerUrl.searchParams.set('v', 'two-projectors1')
 layerUrl.searchParams.set('room', layerRoom)
 document.querySelector('#interaction-layers').src = layerUrl.href
 
@@ -166,16 +166,16 @@ async function enterFullscreen() {
 }
 
 async function startScreening() {
-  if (starting) return
+  if (starting||awaitingPoem) return
   starting = true
+  const fullscreen = enterFullscreen()
+  const audioPlayback = soundtrack.start()
   if (!subtitlesReady) {
     await loadSubtitles()
-    if(!subtitlesReady){starting=false;return}
+    if(!subtitlesReady){await audioPlayback.catch(()=>{});await soundtrack.pause();starting=false;return}
   }
   // Both calls begin in the user gesture so browsers can permit audio and fullscreen.
-  const fullscreen = enterFullscreen()
   const playback = video.play()
-  const audioPlayback = soundtrack.start()
   try {
     const results = await Promise.allSettled([playback, audioPlayback])
     if (results.some(result => result.status === 'rejected')) throw new Error('Media playback failed')
@@ -220,26 +220,50 @@ void loadSubtitles()
 
 // Pause on the final frame while the connected tablet's poem is presented.
 const interactionFrame=document.querySelector('#interaction-layers')
-let awaitingPoem=false,poemTimeout=null
-let filmCycle=Date.now().toString(36)
-function resumeFilm(){
-  clearTimeout(poemTimeout);awaitingPoem=false;filmCycle=Date.now().toString(36);subtitles.style.visibility='';video.currentTime=0
-  video.play().catch(showSetup)
+let awaitingPoem=false,poemTimeout=null,blackoutTimer=null,resuming=false,endingToken=null
+let filmCycle=Date.now().toString(36),endingPhase='waiting'
+const projectorChannel=new BroadcastChannel(`sinopale-projectors-${layerRoom}`)
+function broadcastProjectors(){
+  projectorChannel.postMessage({type:'projector-state',cycle:filmCycle,elapsed:subtitleTime(),sentAt:Date.now(),phase:awaitingPoem?endingPhase:video.paused?'paused':'playing'})
+}
+projectorChannel.onmessage=event=>{if(event.data?.type==='floor-ready')broadcastProjectors()}
+setInterval(broadcastProjectors,250)
+async function resumeFilm(){
+  if(resuming)return
+  resuming=true;clearTimeout(poemTimeout);clearTimeout(blackoutTimer)
+  const resetToken=endingToken
+  video.currentTime=0
+  try{
+    await video.play()
+    filmCycle=Date.now().toString(36);awaitingPoem=false;endingToken=null;endingPhase='waiting'
+    document.body.classList.remove('blackout');subtitles.style.visibility=''
+    interactionFrame.contentWindow.postMessage({type:'film-restarted',resetToken},layerUrl.origin)
+    broadcastProjectors();sendFilmProgress()
+  }catch{awaitingPoem=false;showSetup()}
+  finally{resuming=false}
+}
+function blackoutAndRestart(){
+  if(endingPhase==='blackout')return
+  clearTimeout(poemTimeout);endingPhase='blackout';document.body.classList.add('blackout');broadcastProjectors()
+  blackoutTimer=setTimeout(resumeFilm,2000)
 }
 video.addEventListener('ended',()=>{
-  awaitingPoem=true;subtitles.style.visibility='hidden'
+  if(awaitingPoem)return
+  awaitingPoem=true;endingPhase='waiting';endingToken=null;subtitles.style.visibility='hidden'
+  broadcastProjectors();sendFilmProgress()
   interactionFrame.contentWindow.postMessage({type:'film-ended'},layerUrl.origin)
-  // If the layer page is offline, keep the exhibition film looping.
+  // Offline tablet layer: loop the movie without clearing anyone's unfinished poem.
   poemTimeout=setTimeout(resumeFilm,2500)
 })
 window.addEventListener('message',event=>{
   if(event.source!==interactionFrame.contentWindow||event.origin!==layerUrl.origin||!awaitingPoem)return
   if(event.data?.type==='poem-ending'){
     clearTimeout(poemTimeout)
-    const duration=event.data.duration
-    if(!Number.isFinite(duration)||duration<=0){resumeFilm();return}
-    poemTimeout=setTimeout(resumeFilm,Math.min(duration,900000)+2000)
-  }else if(event.data?.type==='poem-finished')resumeFilm()
+    if(event.data.duration===0){void resumeFilm();return}
+    if(typeof event.data.token!=='string'||event.data.duration!==10000){void resumeFilm();return}
+    endingToken=event.data.token;endingPhase='ending';broadcastProjectors()
+    poemTimeout=setTimeout(blackoutAndRestart,10000)
+  }else if(event.data?.type==='poem-finished'&&event.data.token===endingToken)blackoutAndRestart()
 })
 
 // The tablet's water level is driven by the actual movie clock, not a local timer.
