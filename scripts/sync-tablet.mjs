@@ -15,7 +15,9 @@ for(const name of pictures){const file=path.join('pictures',name),out=path.join(
 const pictureManifest=JSON.stringify(pictures,null,2)+'\n';
 await writeFile(path.join(target,'pictures/manifest.json'),pictureManifest);
 hashes['pictures/manifest.json']=createHash('sha256').update(pictureManifest).digest('hex');
-// Keep the author's tablet source untouched; only adapt the installation snapshot.
+// Older tablet checkouts need the bridge; current published sources already include it.
+const integratedSource=(await readFile(path.join(target,'connection.js'),'utf8')).includes('const events=new SentenceEvents(sender)')&&(await readFile(path.join(target,'app.js'),'utf8')).includes('const pendingTriggers=[],knownLines=new Set()');
+if(!integratedSource){
 function replace(source,from,to){if(!source.includes(from))throw new Error('Tablet source changed: '+from);return source.replace(from,to)}
 let connection=await readFile(path.join(target,'connection.js'),'utf8');
 connection="import {SentenceEvents,validSentenceEvent} from './sentence-events.js'\n"+connection;
@@ -62,5 +64,6 @@ app=replace(app,'startConnection({display:true,room,onState:renderLayers})',`con
   }})`);
 app=replace(app,'send(items){if(network)network.publish(items);else pendingState=items}','send:publishPoem');
 await writeFile(path.join(target,'app.js'),app);
+}
 await writeFile(path.join(target,'snapshot.json'),JSON.stringify({source:'gamepoem/site',revision:execFileSync('git',['-C',source,'rev-parse','HEAD'],{encoding:'utf8'}).trim(),adapter:'scripts/sync-tablet.mjs',hashes},null,2)+'\n');
 console.log(`Synced ${files.length} author tablet files with the installation event bridge.`);
