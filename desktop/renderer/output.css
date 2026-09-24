@@ -83,8 +83,8 @@ body[data-channel="B"] #subtitles {
 
 /* The author's revised reading layout, Turkish above English. */
 .subtitles {
-  bottom: 12%; gap: clamp(5px, .7vh, 12px);
-  padding: .5vh 2vw; background: transparent;
+  left: 4%; right: 4%; bottom: 12%; gap: clamp(5px, .7vh, 12px);
+  padding: .5vh 0; background: transparent;
 }
 #subtitles .subtitle-line {
   color: #fff; font-family: Arial, Helvetica, sans-serif; font-weight: 400;
@@ -95,7 +95,7 @@ body[data-channel="B"] #subtitles {
 }
 .subtitle-line { white-space: normal; text-wrap: balance; }
 #subtitles .subtitle-tr { font-size: clamp(16px, min(3.2vh, 2.4vw), 54px); }
-#subtitles .subtitle-en { font-size: clamp(13px, min(2.5vh, 1.875vw), 42px); color: #bce9f5; }
+#subtitles .subtitle-en { font-size: clamp(14px, min(2.7vh, 2.025vw), 45px); color: #bce9f5; }
 body.poem-ending #world, body.poem-ending #world-background { visibility: hidden; }
 body.poem-ending #media-layer { opacity: 1 !important; background: #000; }
 body.poem-ending #film, body.poem-ending #trigger-overlays, body.poem-ending #subtitles { visibility: hidden; }

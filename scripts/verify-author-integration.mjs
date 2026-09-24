@@ -1,6 +1,6 @@
 import {_electron as electron} from 'playwright';
 import assert from 'node:assert/strict';
-import {mkdtemp,writeFile,mkdir,rm} from 'node:fs/promises';
+import {mkdtemp,writeFile,mkdir,rm,readFile} from 'node:fs/promises';
 import path from 'node:path';
 import os from 'node:os';
 import {installationDefaults} from '../desktop/main/settings.mjs';
@@ -31,14 +31,14 @@ try{
  await tablet.waitForSelector('.blackout-lens');await tablet.evaluate(()=>document.fonts.ready);
  await op.evaluate(()=>window.installation.command('start'));
  await until(async()=> (await state()).time>1);
- assert(Math.abs((await state()).duration-870)<.1);
+ assert(Math.abs((await state()).duration-JSON.parse(await readFile(path.join(root,'assets/video/resonant-field-film/resonant_field_bilingual_timeline.json'),'utf8')).duration)<.1);
  assert.equal(await a.locator('#film').evaluate(v=>v.muted),true);
  assert.equal(await b.locator('#film').evaluate(v=>v.muted),true);
  const audio=await a.evaluate(()=>document.body.dataset.soundtrack);assert.equal(audio,'playing');
  await op.evaluate(()=>window.installation.command('seek',8));
  await until(async()=>!(await state()).busy);
- assert.equal(await a.locator('#subtitle-tr').textContent(),'Uzaklara bakan insanlar, kendi içlerindeki en');
- assert.equal(await a.locator('#subtitle-en').textContent(),'Looking into the distance, humans encountered something');
+ assert.equal(await a.locator('#subtitle-tr').textContent(),"Uzaklara bakan insanlar, kendi içlerindeki en mahrem şeye benzeyen bir şeyle karşılaştı.");
+ assert.equal(await a.locator('#subtitle-en').textContent(),"Looking into the distance, humans encountered something that resembled what was most intimate within themselves.");
  const contrast=await a.locator('#subtitle-en').evaluate(el=>({color:getComputedStyle(el).color,weight:getComputedStyle(el).fontWeight,background:getComputedStyle(el.parentElement).backgroundColor,stroke:getComputedStyle(el).webkitTextStrokeWidth,shadow:getComputedStyle(el).textShadow}));
  assert.equal(contrast.color,'rgb(188, 233, 245)');
  assert.equal(contrast.weight,'400');
