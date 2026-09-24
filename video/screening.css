@@ -3,7 +3,7 @@
 html, body, #screen { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #000; }
 #screen { position: fixed; inset: 0; }
 body.screening { cursor: none; }
-.film { position: absolute; inset: 0; margin: auto; width: min(100vw, 160vh); height: min(100vh, 62.5vw); overflow: hidden; }
+.film { position: absolute; inset: 0; margin: auto; width: 100%; height: 100%; overflow: hidden; }
 video { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .subtitles { position: absolute; left: 5%; right: 5%; bottom: 5%; display: grid; gap: clamp(6px, .8vh, 14px); text-align: center; color: #fff; text-shadow: 0 1px 2px #000, 0 3px 6px #000e, 0 0 14px #0009; pointer-events: none; }
 .subtitle-line { white-space: nowrap; line-height: 1.35; font-weight: 400; }

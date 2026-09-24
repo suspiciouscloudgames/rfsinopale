@@ -5,10 +5,17 @@
   "overlayOpacityVersion": 3,
   "overlaySeconds": 17,
   "overlayTimingVersion": 3,
-  "maxOverlays": 3,
+  "maxOverlays": 1,
   "jelliesPerTrigger": 1,
   "minJellies": 1,
   "maxJellies": 16,
   "modelUrl": "../animation/jellyfish_slow_swim.glb",
-  "triggerVideoUrl": "./trigger-videos.json"
+  "triggerVideoUrl": "./trigger-videos.json",
+  "jellyMode": "composition",
+  "compositionJellies": 4,
+  "swarmDensity": "medium",
+  "swarmDelay": 3,
+  "swarmRise": 24,
+  "swarmTimingVersion": 2,
+  "swarmOpacity": 0.45
 }

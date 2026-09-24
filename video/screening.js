@@ -220,7 +220,7 @@ let hiddenPause = false, fps = 0, fpsFrames = 0, fpsStart = performance.now()
 function renderCycle(now) {
   const fade = cycle.frame(video.currentTime,video.duration)
   filmArea.style.setProperty('--film-opacity',String(1-fade))
-  jellies.set(cycle.jellyCount(),fade)
+  jellies.set(cycle.displayJellyCount(),fade,cycle.settings)
   jellies.frame(now)
   overlays.frame()
   document.body.dataset.phase=cycle.phase
@@ -229,7 +229,7 @@ function renderCycle(now) {
   if(now-lastReport>250){
     lastReport=now
     const duration=Number.isFinite(video.duration)?video.duration:0
-    document.querySelector('#runtime-status').textContent=`회차 ${cycle.round} · ${cycle.phase}\n영상 ${video.currentTime.toFixed(1)} / ${duration.toFixed(1)}초 · 대기 ${cycle.remaining.toFixed(1)}초\n문장트리거 ${cycle.count}회 · 다음 회차 ${cycle.pending}회\n해파이 ${fade>0?cycle.jellyCount():0}개 · 트리거영상 ${overlays.count}개 · ${fps} FPS\n현재 페이드 ${cycle.settings.fadeSeconds}초 / 대기 ${cycle.settings.holdSeconds}초\n다음 회차 페이드 ${nextSettings.fadeSeconds}초 / 대기 ${nextSettings.holdSeconds}초`
+    document.querySelector('#runtime-status').textContent=`회차 ${cycle.round} · ${cycle.phase}\n영상 ${video.currentTime.toFixed(1)} / ${duration.toFixed(1)}초 · 대기 ${cycle.remaining.toFixed(1)}초\n문장트리거 ${cycle.count}회 · 다음 회차 ${cycle.pending}회\n근경 해파이 ${fade>0?cycle.displayJellyCount():0}개 · 군집 ${jellyRoot.dataset.swarmCount||0}개 · 트리거영상 ${overlays.count}개 · ${fps} FPS\n현재 페이드 ${cycle.settings.fadeSeconds}초 / 대기 ${cycle.settings.holdSeconds}초\n다음 회차 페이드 ${nextSettings.fadeSeconds}초 / 대기 ${nextSettings.holdSeconds}초`
   }
 }
 

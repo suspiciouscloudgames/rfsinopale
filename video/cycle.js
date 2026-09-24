@@ -27,5 +27,6 @@ export class ScreeningCycle {
     if(this.remaining===0){this.phase='restarting';return true}
     return false
   }
+  displayJellyCount(){return this.settings.jellyMode==='composition'?this.settings.compositionJellies:this.jellyCount()}
   jellyCount(){return Math.min(this.settings.maxJellies,Math.max(this.settings.minJellies,this.count*this.settings.jelliesPerTrigger))}
 }

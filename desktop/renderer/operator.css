@@ -1,0 +1,78 @@
+:root {
+  color-scheme: dark;
+  font: 15px/1.5 system-ui;
+  background: #081319;
+  color: #e3efe9;
+}
+body {
+  margin: 0;
+}
+main {
+  max-width: 850px;
+  margin: auto;
+  padding: 24px;
+}
+h1 {
+  font-size: 26px;
+  margin: 0;
+}
+small {
+  font-size: 15px;
+  color: #91b7a8;
+}
+h2 {
+  font-size: 18px;
+  margin: 0 0 12px;
+}
+section,
+form,
+details {
+  padding: 18px;
+  margin: 18px 0;
+  background: #10242b;
+  border: 1px solid #284047;
+  border-radius: 10px;
+}
+button,
+input,
+select {
+  font: inherit;
+  padding: 9px;
+  border-radius: 5px;
+  border: 1px solid #49636a;
+  background: #182f36;
+  color: inherit;
+}
+button {
+  cursor: pointer;
+  margin: 4px 4px 4px 0;
+}
+button:hover {
+  background: #2a4a50;
+}
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+pre {
+  white-space: pre-wrap;
+  font: 14px/1.6 ui-monospace;
+}
+p {
+  color: #b6c9c8;
+  overflow-wrap: anywhere;
+}
+#error {
+  color: #ffa19c;
+  white-space: pre-wrap;
+}
+summary {
+  cursor: pointer;
+}

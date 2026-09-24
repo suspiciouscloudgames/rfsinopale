@@ -1,7 +1,10 @@
+import {DEFAULTS} from './config.js'
+import {heroRevealTime} from './swarm-layout.js'
 import {jellyPosition,cameraPassPosition} from './jelly-layout.js'
 // Native SVG fallback remains visible even without WebGL or a model.
 export function createJellies(root,onStatus=()=>{}) {
  let renderer,scene,camera,THREE,cloneModel,template=null,animations=[],modelUrl='',generation=0
+ let swarm=null,swarmSettings=DEFAULTS,heroReady=heroRevealTime(t=>cameraPassPosition(t,1.6),1.6)
  let desired=0,instances=[],fallback=[],alpha=0,last=performance.now(),failed=false,wasVisible=false,elapsed=0,roundSeed=Math.random()*1000
  const fallbackRoot=document.createElement('div');fallbackRoot.className='jelly-fallback';root.append(fallbackRoot)
  function fallbackJelly(index){
@@ -11,7 +14,7 @@ export function createJellies(root,onStatus=()=>{}) {
   fallbackRoot.append(el);return el
  }
  function removeInstances(){for(const item of instances){scene?.remove(item.group);item.mixer?.stopAllAction();item.mixer?.uncacheRoot(item.model)}instances=[];for(const el of fallback)el.remove();fallback=[]}
- function resize(){if(!renderer)return;const {width,height}=root.getBoundingClientRect();if(!width||!height)return;renderer.setSize(width,height,false);camera.aspect=width/height;camera.updateProjectionMatrix();place()}
+ function resize(){if(!renderer)return;const {width,height}=root.getBoundingClientRect();if(!width||!height)return;renderer.setSize(width,height,false);camera.aspect=width/height;camera.updateProjectionMatrix();heroReady=heroRevealTime(t=>cameraPassPosition(t,camera.aspect),camera.aspect);place()}
  function place(){instances.forEach((item,i)=>{const p=jellyPosition(i,camera.aspect);item.base=p;item.group.position.set(p.x,p.y,p.z);item.group.scale.setScalar(p.scale)})}
  function reconcile(){
   if(!template||failed||!renderer){while(fallback.length<desired)fallback.push(fallbackJelly(fallback.length));while(fallback.length>desired)fallback.pop().remove();return}
@@ -35,6 +38,7 @@ export function createJellies(root,onStatus=()=>{}) {
     renderer=new THREE.WebGLRenderer({alpha:true,antialias:true,powerPreference:'high-performance'});renderer.setPixelRatio(Math.min(devicePixelRatio,1.25));renderer.setClearColor(0,0);root.prepend(renderer.domElement)
     scene=new THREE.Scene();camera=new THREE.PerspectiveCamera(35,1.6,.025,40);scene.add(new THREE.HemisphereLight(0xd5fff1,0x29486f,3));const light=new THREE.DirectionalLight(0xffffff,3);light.position.set(2,5,4);scene.add(light);scene.fog=new THREE.FogExp2(0x092738,.045)
     renderer.domElement.addEventListener('webglcontextlost',event=>{event.preventDefault();failed=true;renderer.domElement.style.display='none';removeInstances();reconcile();onStatus('WebGL 중단 · 해파이 대체 표시')})
+    const {createSwarm}=await import('./swarm.js');swarm=createSwarm(scene)
     resize()
    }
    const {GLTFLoader}=await import('./vendor/three/addons/loaders/GLTFLoader.js')
@@ -48,18 +52,21 @@ export function createJellies(root,onStatus=()=>{}) {
  const observer=new ResizeObserver(resize);observer.observe(root)
  return {
   load,
-  set(count,opacity){
+  set(count,opacity,settings=DEFAULTS){
+   swarmSettings=settings;root.dataset.jellyMode=settings.jellyMode;
    alpha=opacity;root.style.opacity=String(alpha);root.dataset.visibleCount=String(alpha>0?count:0)
    const next=alpha>0?count:0;if(next!==desired){if(!desired&&next){elapsed=0;roundSeed=Math.random()*1000}desired=next;reconcile()}
   },
   frame(now){
    const dt=Math.min((now-last)/1000,.1);last=now
-   if(alpha<=0){if(wasVisible&&renderer&&!failed)renderer.clear();wasVisible=false;return}wasVisible=true
+   if(alpha<=0){root.dataset.swarmCount='0';swarm?.frame({settings:swarmSettings,visible:false});if(wasVisible&&renderer&&!failed)renderer.clear();wasVisible=false;return}wasVisible=true
    elapsed+=dt
    instances.forEach((item,i)=>{const p=i===0?cameraPassPosition(elapsed,camera.aspect):jellyPosition(i,camera.aspect,elapsed,roundSeed);item.group.position.set(p.x,p.y,p.z);item.group.rotation.z=-.32;item.group.rotation.y=Math.sin(elapsed*.12+i)*.2;item.group.scale.setScalar(p.scale*p.edge*Math.min(1,(now-item.born)/700));item.mixer?.update(dt)})
    fallback.forEach((el,i)=>{const p=jellyPosition(i,1.6,elapsed,roundSeed);el.style.left=`${p.u*100}%`;el.style.top=`${p.v*100}%`;el.style.width=`${[20,14,9][p.layer]}%`;el.style.transform=`translate(-50%,-50%) rotate(25deg) scale(${p.edge})`})
    root.dataset.motionTime=elapsed.toFixed(2);root.dataset.cameraPassZ=cameraPassPosition(elapsed).z.toFixed(2)
-   if(renderer&&!failed)renderer.render(scene,camera)
+   const swarmCount=!failed&&swarm?swarm.frame({time:elapsed,seed:roundSeed,aspect:camera.aspect,ready:heroReady,settings:swarmSettings}):0
+   root.dataset.swarmCount=String(swarmCount);root.dataset.swarmReady=String(heroReady)
+   if(renderer&&!failed){renderer.render(scene,camera);root.dataset.drawCalls=String(renderer.info.render.calls)}
   },
   get mode(){return template&&!failed?'model':'fallback'}
  }

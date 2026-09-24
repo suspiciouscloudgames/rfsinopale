@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Drifting Sea · 2채널 운영</title>
+    <link rel="stylesheet" href="./operator.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Drifting Sea <small>2채널 상영</small></h1>
+      <p>위 A · 기존 영상 / 아래 B · 바닥 영상</p>
+      <p id="mode"></p>
+      <section>
+        <h2>상영</h2>
+        <div class="actions">
+          <button data-command="start">시작 / 재개</button
+          ><button data-command="pause">일시정지</button
+          ><button data-command="fullscreen">두 화면 전체화면</button
+          ><button data-command="windowed">창 모드</button>
+        </div>
+        <pre id="status">연결 중</pre>
+        <p id="error" role="alert"></p>
+      </section>
+      <section>
+        <h2>화면 지정</h2>
+        <label
+          >위 A
+          <select id="display-A"></select></label
+        ><label
+          >아래 B
+          <select id="display-B"></select></label
+        ><button id="map">화면 배치 적용</button>
+        <p>
+          각 출력의 A/B 표시를 확인하세요. 디스플레이가 바뀌면 일시정지 후 다시
+          지정합니다.
+        </p>
+      </section>
+      <section>
+        <h2>영상</h2>
+        <p id="media-A"></p>
+        <button id="choose-A">위 영상 교체</button>
+        <p id="media-B"></p>
+        <button id="choose-B">아래 영상 교체</button>
+      </section>
+      <form id="settings"><label>해파이 구성<select name="jellyMode" disabled><option value="composition">군집 구성 · 횟수 무관 (고정)</option></select></label>
+<label>근경 해파이 수 (통과 개체 포함)<input name="compositionJellies" type="number" min="1" max="8" required></label>
+<label>군집 밀도<select name="swarmDensity"><option value="low">낮음</option><option value="medium">보통</option><option value="high">높음</option></select></label>
+<label>군집 등장 대기 (초)<input name="swarmDelay" type="number" min="0" max="120" step=".1" required></label>
+<label>군집 증가 시간 (초)<input name="swarmRise" type="number" min="1" max="120" step=".1" required></label>
+<label>군집 최대 불투명도 (0~1)<input name="swarmOpacity" type="number" min="0" max="1" step=".05" required></label>
+<p>구성 변경은 다음 회차부터 적용됩니다. 항상 군집 구성·횟수 무관으로 실행됩니다. 기존 최소·최대·트리거당 개수 설정은 보존되지만 현재 상영에는 적용되지 않습니다. 카메라 통과 장면보다 페이드+유지 시간이 짧으면 군집이 등장하기 전에 다음 회차가 시작될 수 있습니다.</p>
+
+        <h2>연출 설정</h2>
+        <div class="grid">
+          <label
+            >페이드 시간 (초)<input
+              name="fadeSeconds"
+              type="number"
+              min="0"
+              max="3600"
+              step=".1" /></label
+          ><label
+            >해파이 유지 (초)<input
+              name="holdSeconds"
+              type="number"
+              min="0"
+              max="3600"
+              step=".1" /></label
+          ><label
+            >최소 해파이<input
+              name="minJellies"
+              type="number"
+              min="1"
+              max="16" /></label
+          ><label
+            >최대 해파이<input
+              name="maxJellies"
+              type="number"
+              min="1"
+              max="16" /></label
+          ><label
+            >트리거당 해파이<input
+              name="jelliesPerTrigger"
+              type="number"
+              min="1"
+              max="10" /></label
+          ><label
+            >트리거영상 불투명도<input
+              name="overlayOpacity"
+              type="number"
+              min="0"
+              max="1"
+              step=".05" /></label
+          ><label
+            >트리거영상 시간 (초)<input
+              name="overlaySeconds"
+              type="number"
+              min=".5"
+              max="240"
+              step=".1" /></label
+          ><label
+            >동시 트리거영상 (1개 고정)<input
+              name="maxOverlays"
+              readonly
+              type="number"
+              min="1"
+              max="1" /></label
+          ><label
+            >위 영상 맞춤<select name="fitA">
+              <option value="contain">전체 보이기 (여백 허용)</option>
+              <option value="cover">화면 채우기 (잘림 허용)</option>
+            </select></label
+          ><label
+            >아래 영상 맞춤<select name="fitB">
+              <option value="contain">전체 보이기 (여백 허용)</option>
+              <option value="cover">화면 채우기 (잘림 허용)</option>
+            </select></label
+          >
+        </div>
+        <button type="submit">설정 저장</button
+        ><button type="button" data-command="export-settings">
+          JSON 내보내기</button
+        ><button type="button" data-command="import-settings">
+          JSON 가져오기
+        </button>
+        <p>
+          회차 설정은 다음 회차부터, 트리거영상 설정은 다음 입력부터 적용됩니다.
+        </p>
+      </form>
+      <details>
+        <summary>리허설 · 현재 재생 위치를 변경합니다</summary>
+        <button data-command="trigger">테스트 문장트리거</button
+        ><button data-command="fade">페이드 시작으로 이동</button
+        ><button data-command="end">종료 2초 전으로 이동</button
+        ><button data-command="recover">출력 재로딩</button
+        ><label
+          >상영 위치 (초)<input
+            id="seek-time"
+            type="number"
+            min="0"
+            step=".1" /></label
+        ><button id="seek">해당 위치로 이동</button>
+      </details>
+      <section>
+        <h2>태블릿 연결</h2>
+        <p id="tablet"></p>
+        <p>
+          현재 연결은 기존 Game Poem의 PeerJS 방식입니다. 실제 태블릿은 배포된
+          Game Poem에서 같은 room으로 접속합니다.
+        </p>
+      </section>
+      <button data-command="quit">앱 종료</button>
+    </main>
+    <script type="module" src="./operator.js"></script>
+  </body>
+</html>

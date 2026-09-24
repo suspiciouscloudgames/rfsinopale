@@ -1,1 +1,23 @@
-{"name":"drifting-sea-screening","private":true,"type":"module","scripts":{"test":"node --test tests/*.test.mjs","cache":"python3 scripts/update-screening-cache.py"}}
+{
+  "name": "drifting-sea-screening",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "cache": "python3 scripts/update-screening-cache.py",
+    "desktop": "electron .",
+    "desktop:preview": "electron . --preview",
+    "desktop:verify": "node scripts/verify-desktop.mjs",
+    "desktop:package:win": "node scripts/package-desktop.mjs",
+    "tablet:sync": "node scripts/sync-tablet.mjs",
+    "desktop:verify:startup": "node scripts/verify-startup.mjs"
+  },
+  "version": "1.0.0",
+  "description": "Drifting Sea dual-channel installation",
+  "main": "desktop/main/main.mjs",
+  "devDependencies": {
+    "@electron/packager": "20.3.0",
+    "electron": "44.4.5",
+    "playwright": "1.63.0"
+  }
+}

@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import {SentenceEvents,validSentenceEvent} from '../../gamepoem/sentence-events.js'
+import {SentenceEvents,validSentenceEvent} from '../desktop/tablet/sentence-events.js'
 test('fast input is retained until exact acknowledgment, retries keep IDs',()=>{
  const q=new SentenceEvents('tablet');q.enqueue('a');q.enqueue('b');assert.equal(q.packets().length,0)
  q.setSession('screen');const packets=q.packets();assert.equal(packets.length,2);assert.ok(validSentenceEvent(packets[0],'screen'))

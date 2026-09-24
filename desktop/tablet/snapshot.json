@@ -1,0 +1,18 @@
+{
+  "source": "../gamepoem",
+  "files": {
+    "index.html": "52c138d386eb15a9657acc56883aee9ace13603daad43a6c3a6676d940356c7b",
+    "app.js": "7d9e02355bb8708205da56a57144960a72e5d77d48d0dfdfad67f0945ef2a1d5",
+    "connection.js": "ff7232816a5b61de1ffa1b437547e8a635d0b72bb02d0318e4a65625f7a1a2a9",
+    "sentence-events.js": "9b65d868f8a8a855976b099f0209d3505e482f76318859cdb63c894bd019685e",
+    "content.js": "0de6af1ba85c4a8c1512bf13a9ccd49b1b80df7fda0494e136282623d3dedf38",
+    "interaction.js": "4e6110a30710f1bdbf2e086b4ee8d0657aa084b9737341ae62b17f06e5cfcb54",
+    "effects.js": "2de29f3707b3e84bbdccc1bacde2c915e59557882d1f158c2bd478ebb6d5d8fc",
+    "style.css": "90feea148ecc131df85778fd473a5db9a808b13c08eff3da3ec590a7a09c1fd8",
+    "vendor/peerjs-ios14.min.js": "41c5996f2be03b7b796337cdcefa88466ab215812029f773e7e87289907f8fa3",
+    "vendor/peerjs.LICENSE": "9407807dba7f47a79bfb3ac55759d63d77c9371ebd0616d5a093e97d3e810397",
+    "assets/ocean-aerial-loop.mp4": "495cf3e3478fb76668e7ad5b3ef98cbb1611121cb892aa81ab3feed7d45d937a",
+    "assets/ocean-aerial-poster.jpg": "e871ab4d4d61300516375996660f81c70f25c81b9dde662f995d5887e9a0d010",
+    "assets/CREDITS.md": "9b477bd609c4f7f95ec4f0ac458d7092b35c41591e0275f475dce32a7d161cdf"
+  }
+}

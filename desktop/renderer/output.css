@@ -1,0 +1,82 @@
+html,
+body,
+#stage {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #01080d;
+}
+body {
+  cursor: none;
+}
+#stage {
+  position: relative;
+  background: linear-gradient(#102b36, #01080d);
+}
+#media-layer,
+#world {
+  position: absolute;
+  inset: 0;
+}
+#media-layer {
+  background: #000;
+}
+#film {
+  object-fit: contain;
+}
+#world {
+  pointer-events: none;
+  overflow: hidden;
+}
+#world canvas,
+.silhouettes {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.silhouette {
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+.silhouette svg {
+  width: 100%;
+  display: block;
+}
+#identity {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  color: #fff;
+  font: 20px Arial;
+  z-index: 4;
+}
+#notice {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  background: #000b;
+  color: #bce9e5;
+  font: 18px Arial;
+  z-index: 5;
+  white-space: pre-line;
+}
+#notice[hidden] {
+  display: none;
+}
+#subtitles {
+  z-index: 2;
+}
+.trigger-line {
+  z-index: 1;
+}
+#interaction-layers {
+  opacity: 1;
+}
+body[data-channel="B"] #interaction-layers,
+body[data-channel="B"] #subtitles {
+  display: none;
+}

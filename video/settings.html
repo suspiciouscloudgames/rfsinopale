@@ -8,13 +8,20 @@
 <fieldset><legend>트리거영상</legend>
 <label>불투명도 (%) · 0=안 보임 / 100=원본<input name="opacityPercent" type="number" min="0" max="100" step="1" required></label>
 <label>총 표시 시간 (초 · 증가:유지:감소 = 7:3:7)<input name="overlaySeconds" type="number" min="0.5" max="240" step="0.1" required></label>
-<label>동시 표시 수<input name="maxOverlays" type="number" min="1" max="4" step="1" required></label>
+<label>동시 표시 수 (1개 고정)<input name="maxOverlays" type="number" min="1" max="1" step="1" readonly required></label>
 <label>영상 목록 JSON 또는 단일 영상 경로<input name="triggerVideoUrl" type="text" required></label>
-<p>기본 목록은 assets/tiggerVideos의 4개 영상을 무작위로 재생합니다. 화면 전체의 무작위 지점에서 부드럽게 번져 나타났다가 사라집니다. 기본 17초: 7초 증가 → 3초 유지 → 7초 감소. 설정 불투명도는 최대 강도입니다. 입력이 몰리면 오래된 오버레이를 교체하며 트리거 횟수는 모두 집계합니다.</p></fieldset>
+<p>기본 목록은 assets/tiggerVideos의 4개 영상을 무작위로 재생합니다. 화면 전체의 무작위 지점에서 부드럽게 번져 나타났다가 사라집니다. 기본 17초: 7초 증가 → 3초 유지 → 7초 감소. 설정 불투명도는 최대 강도입니다. 재생 중 추가 입력은 영상을 교체하거나 예약하지 않으며 트리거 횟수는 모두 집계합니다.</p></fieldset>
 <fieldset><legend>해파이 오브젝트</legend>
 <label>트리거 1회당 개체 수<input name="jelliesPerTrigger" type="number" min="1" max="10" step="1" required></label>
 <label>최소 개체 수<input name="minJellies" type="number" min="1" max="16" step="1" required></label>
 <label>최대 개체 수<input name="maxJellies" type="number" min="1" max="16" step="1" required></label>
+<label>해파이 구성<select name="jellyMode" disabled><option value="composition">군집 구성 · 횟수 무관 (고정)</option></select></label>
+<label>근경 해파이 수 (통과 개체 포함)<input name="compositionJellies" type="number" min="1" max="8" required></label>
+<label>군집 밀도<select name="swarmDensity"><option value="low">낮음</option><option value="medium">보통</option><option value="high">높음</option></select></label>
+<label>군집 등장 대기 (초)<input name="swarmDelay" type="number" min="0" max="120" step=".1" required></label>
+<label>군집 증가 시간 (초)<input name="swarmRise" type="number" min="1" max="120" step=".1" required></label>
+<label>군집 최대 불투명도 (0~1)<input name="swarmOpacity" type="number" min="0" max="1" step=".05" required></label>
+<p>구성 변경은 다음 회차부터 적용됩니다. 항상 군집 구성·횟수 무관으로 실행됩니다. 기존 최소·최대·트리거당 개수 설정은 보존되지만 현재 상영에는 적용되지 않습니다. 카메라 통과 장면보다 페이드+유지 시간이 짧으면 군집이 등장하기 전에 다음 회차가 시작될 수 있습니다.</p>
 <label>GLB / glTF 모델 파일 경로<input name="modelUrl" type="text" required></label>
 <p>참여가 없어도 최소 개체를 표시합니다. 모델이 준비되지 않으면 해파이 실루엣으로 대체합니다.</p></fieldset>
 <div class="actions"><button type="submit">설정 저장</button><button id="reset" type="button">기본값 복원</button><button id="export" type="button">JSON 내보내기</button><label class="import">JSON 가져오기<input id="import" type="file" accept="application/json,.json"></label></div>

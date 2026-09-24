@@ -1,9 +1,9 @@
 import {loadSettings,readSavedSettings,validateSettings,SETTINGS_KEY} from './config.js'
 const defaults=await loadSettings(false),form=document.querySelector('#settings'),message=document.querySelector('#message')
-const numeric=['fadeSeconds','holdSeconds','overlaySeconds','maxOverlays','jelliesPerTrigger','minJellies','maxJellies']
+const numeric=['compositionJellies','swarmDelay','swarmRise','swarmOpacity','fadeSeconds','holdSeconds','overlaySeconds','maxOverlays','jelliesPerTrigger','minJellies','maxJellies']
 function fill(config){for(const [key,value]of Object.entries(config)){if(form.elements[key])form.elements[key].value=value}form.elements.opacityPercent.value=Math.round(config.overlayOpacity*100);updateTiming()}
-function read(){const data={};for(const key of numeric)data[key]=Number(form.elements[key].value);for(const key of ['modelUrl','triggerVideoUrl'])data[key]=form.elements[key].value;data.overlayOpacity=Number(form.elements.opacityPercent.value)/100;return validateSettings(data)}
-const video=document.createElement('video');video.preload='metadata';video.muted=true;video.src='../assets/video/resonant-field-film/resonant_field_picture.mp4'
+function read(){const data={};for(const key of numeric)data[key]=Number(form.elements[key].value);for(const key of ['modelUrl','triggerVideoUrl','jellyMode','swarmDensity'])data[key]=form.elements[key].value;data.overlayOpacity=Number(form.elements.opacityPercent.value)/100;return validateSettings(data)}
+const video=document.createElement('video');video.preload='metadata';video.muted=true;video.src='../assets/video/resonant-field-film/resonant_field_picture_01.mp4'
 function updateTiming(){const d=video.duration;if(Number.isFinite(d))document.querySelector('#timing').textContent=`영상 총길이 ${d.toFixed(2)}초 · 페이드 시작 ${Math.max(0,d-Number(form.elements.fadeSeconds.value)).toFixed(2)}초 · 한 회차 ${(d+Number(form.elements.holdSeconds.value)).toFixed(2)}초`}
 video.addEventListener('loadedmetadata',updateTiming);video.addEventListener('error',()=>document.querySelector('#timing').textContent='영상 길이를 읽지 못했습니다. 상영 파일을 확인하세요.')
 form.addEventListener('input',updateTiming);fill(readSavedSettings(defaults))
