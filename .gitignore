@@ -7,3 +7,12 @@ output/
 # Local editing pool; originals remain in their existing repositories.
 /assets/video/source-clips/
 /assets/floorVideos/source-clips/
+
+# Archived editing sources: restore locally for re-editing; do not republish.
+/assets/editing-originals/
+/assets/tiggerVideos/IMG_4436.MOV
+/assets/tiggerVideos/IMG_4861.MOV
+/assets/tiggerVideos/IMG_4869.MOV
+/assets/tiggerVideos/IMG_4872.MOV
+/assets/tiggerVideos/IMG_4890.MOV
+/assets/tiggerVideos/IMG_4891.MOV

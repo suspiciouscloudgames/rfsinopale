@@ -1,5 +1,15 @@
 # 함께 편집할 영상 소재
 
+## 2026-10-31 원본 보관 위치 변경
+
+현재 상영 코드가 참조하지 않는 편집 원본 33개(2,348,010,805 bytes)는 GitHub 배포 트리에서 제외했다. 작가의 `assets/editing-originals/youngju/` 영상 27개와 `assets/tiggerVideos/`의 원본 MOV 6개다. 상영용 MP4, 웹 트리거 MP4, 모델, 자막, 상영 코드와 설정은 그대로 유지한다.
+
+전체 Git 이력과 LFS 원본은 별도 `GitHub-LFS-Backup-20261031` 백업에 보존했다. 백업의 `editing-originals-archive/assets/`에는 바로 사용할 수 있는 원본 사본이 있고, `archived-editing-originals.json`에는 경로·크기·SHA-256이 있다. 재편집 전 이 `assets/`를 작업 복제본의 `assets/`에 복원한다. 백업에 있는 `restore-editing-originals.py`에 작업 폴더를 인자로 주면 기존 파일을 덮어쓰지 않고 해시를 확인해 복원할 수 있다.
+
+복원한 원본은 `.gitignore`로 제외되며 로컬 재편집에만 사용한다. 원본 백업과 기존 개인 작업 폴더는 삭제하지 않는다. 아래 수집 스크립트는 원본을 복원한 뒤 실행한다.
+
+이번 일반 커밋의 파일 제거는 이전 Git 이력이나 GitHub 서버의 LFS 객체를 제거하지 않는다. 원격 LFS 저장량 회수는 별도 이력 정리와 GitHub 측 제거 절차가 필요하다.
+
 이제 새 편집의 입력 폴더는 다음 두 곳이다.
 
 - 위 스크린: `assets/video/source-clips/`
